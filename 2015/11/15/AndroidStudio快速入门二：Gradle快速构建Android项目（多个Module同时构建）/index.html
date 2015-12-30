@@ -1,0 +1,528 @@
+
+ <!DOCTYPE HTML>
+<html >
+<head>
+  <meta charset="UTF-8">
+  
+    <title>AndroidStudio快速入门二：Gradle快速构建Android项目（多个Module同时构建） | ZengJingFang|Blog</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
+    
+    <meta name="author" content="zengjingfang">
+    
+
+    
+    <meta name="description" content="【开篇语】小编菜鸟一只，初入AndroidStudio,只是想搞清楚项目从Eclipse导入到AndroidStudio的过程中是怎么回事。所以简单的看了下，gradle用法还有很多，其中原理还待深入了解。
+一、Gradle准备
+安装好AS后，有默认的Gradle,但是建议使用自己的Gradle,本人下载的 gradle-2.5-all版本；
+配置环境变量： GRADLE_HOME ==&amp;gt;&amp;">
+<meta property="og:type" content="article">
+<meta property="og:title" content="AndroidStudio快速入门二：Gradle快速构建Android项目（多个Module同时构建）">
+<meta property="og:url" content="http://zengjingfang.cn/2015/11/15/AndroidStudio快速入门二：Gradle快速构建Android项目（多个Module同时构建）/index.html">
+<meta property="og:site_name" content="ZengJingFang|Blog">
+<meta property="og:description" content="【开篇语】小编菜鸟一只，初入AndroidStudio,只是想搞清楚项目从Eclipse导入到AndroidStudio的过程中是怎么回事。所以简单的看了下，gradle用法还有很多，其中原理还待深入了解。
+一、Gradle准备
+安装好AS后，有默认的Gradle,但是建议使用自己的Gradle,本人下载的 gradle-2.5-all版本；
+配置环境变量： GRADLE_HOME ==&amp;gt;&amp;">
+<meta property="og:image" content="http://img.blog.csdn.net/20151104213925614">
+<meta property="og:image" content="http://img.blog.csdn.net/20151110203839976">
+<meta property="og:image" content="http://img.blog.csdn.net/20151110205057447">
+<meta property="og:updated_time" content="2015-12-30T14:15:06.103Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="AndroidStudio快速入门二：Gradle快速构建Android项目（多个Module同时构建）">
+<meta name="twitter:description" content="【开篇语】小编菜鸟一只，初入AndroidStudio,只是想搞清楚项目从Eclipse导入到AndroidStudio的过程中是怎么回事。所以简单的看了下，gradle用法还有很多，其中原理还待深入了解。
+一、Gradle准备
+安装好AS后，有默认的Gradle,但是建议使用自己的Gradle,本人下载的 gradle-2.5-all版本；
+配置环境变量： GRADLE_HOME ==&amp;gt;&amp;">
+
+    
+    <link rel="alternative" href="/atom.xml" title="ZengJingFang|Blog" type="application/atom+xml">
+    
+    
+    <link rel="icon" href="/img/favicon.ico">
+    
+    
+    <link rel="apple-touch-icon" href="/img/jacman.jpg">
+    <link rel="apple-touch-icon-precomposed" href="/img/jacman.jpg">
+    
+    <link rel="stylesheet" href="/css/style.css" type="text/css">
+</head>
+
+  <body>
+    <header>
+      
+<div>
+		
+			<div id="imglogo">
+				<a href="/"><img src="/img/logo.png" alt="ZengJingFang|Blog" title="ZengJingFang|Blog"/></a>
+			</div>
+			
+			<div id="textlogo">
+				<h1 class="site-name"><a href="/" title="ZengJingFang|Blog">ZengJingFang|Blog</a></h1>
+				<h2 class="blog-motto">www.zengjingfang.cn</h2>
+			</div>
+			<div class="navbar"><a class="navbutton navmobile" href="#" title="菜單">
+			</a></div>
+			<nav class="animated">
+				<ul>
+					<ul>
+					 
+						<li><a href="/">主页|Home</a></li>
+					
+						<li><a href="/archives">归档|Archives</a></li>
+					
+						<li><a href="/about">关于|About</a></li>
+					
+					<li>
+ 					
+					<form class="search" action="//google.com/search" method="get" accept-charset="utf-8">
+						<label>Search</label>
+						<input type="search" id="search" name="q" autocomplete="off" maxlength="20" placeholder="搜索" />
+						<input type="hidden" name="q" value="site:zengjingfang.cn">
+					</form>
+					
+					</li>
+				</ul>
+			</nav>			
+</div>
+    </header>
+    <div id="container">
+      <div id="main" class="post" itemscope itemprop="blogPost">
+  
+	<article itemprop="articleBody"> 
+		<header class="article-info clearfix">
+  <h1 itemprop="name">
+    
+      <a href="/2015/11/15/AndroidStudio快速入门二：Gradle快速构建Android项目（多个Module同时构建）/" title="AndroidStudio快速入门二：Gradle快速构建Android项目（多个Module同时构建）" itemprop="url">AndroidStudio快速入门二：Gradle快速构建Android项目（多个Module同时构建）</a>
+  </h1>
+  <p class="article-author">By
+       
+		<a href="/about" title="zengjingfang" target="_blank" itemprop="author">zengjingfang</a>
+		
+  <p class="article-time">
+    <time datetime="2015-11-15T13:31:42.000Z" itemprop="datePublished"> 發表於 2015-11-15</time>
+    
+  </p>
+</header>
+	<div class="article-content">
+		
+		<div id="toc" class="toc-article">
+			<strong class="toc-title">文章目錄</strong>
+		
+			<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#u4E00_u3001Gradle_u51C6_u5907"><span class="toc-number">1.</span> <span class="toc-text">一、Gradle准备</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#u4E8C_u3001_u6F14_u793A_u9879_u76EE_u7684_u9879_u76EE_u7ED3_u6784"><span class="toc-number">2.</span> <span class="toc-text">二、演示项目的项目结构</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#u4E09_u3001settings-gradle_u914D_u7F6E"><span class="toc-number">3.</span> <span class="toc-text">三、settings.gradle配置</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#u56DB_u3001build-gradle_u914D_u7F6E"><span class="toc-number">4.</span> <span class="toc-text">四、build.gradle配置</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#u4E94_u3001_u6784_u5EFA_u9879_u76EE_u3001_u6267_u884Cgradle_u547D_u4EE4"><span class="toc-number">5.</span> <span class="toc-text">五、构建项目、执行gradle命令</span></a></li></ol>
+		
+		</div>
+		
+		<p>【开篇语】小编菜鸟一只，初入AndroidStudio,只是想搞清楚项目从Eclipse导入到AndroidStudio的过程中是怎么回事。所以简单的看了下，gradle用法还有很多，其中原理还待深入了解。</p>
+<h2 id="u4E00_u3001Gradle_u51C6_u5907"><a href="#u4E00_u3001Gradle_u51C6_u5907" class="headerlink" title="一、Gradle准备"></a>一、Gradle准备</h2><ol>
+<li>安装好AS后，有默认的Gradle,但是建议使用自己的Gradle,本人下载的 gradle-2.5-all版本；</li>
+<li>配置环境变量：<pre><code> GRADLE_HOME ==&gt;&gt;D:\Program Files\Android\Android Studio\gradle\gradle-2.5-all\gradle-2.5\bin;
+PATH ==&gt;&gt; %GRADLE_HOME%;
+</code></pre></li>
+<li>检验 ：<br>运行 gradle -v    如图  既是配置成功<br><img src="http://img.blog.csdn.net/20151104213925614" alt="gradle配置成功"></li>
+</ol>
+<h2 id="u4E8C_u3001_u6F14_u793A_u9879_u76EE_u7684_u9879_u76EE_u7ED3_u6784"><a href="#u4E8C_u3001_u6F14_u793A_u9879_u76EE_u7684_u9879_u76EE_u7ED3_u6784" class="headerlink" title="二、演示项目的项目结构"></a>二、演示项目的项目结构</h2><figure class="highlight gherkin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">|<span class="string">—— demo：</span><br><span class="line">   </span>|<span class="string">—— libproject:</span><br><span class="line">   </span>|<span class="string">       </span>|<span class="string">- project1</span><br><span class="line">   </span>|<span class="string">       </span>|<span class="string">- project2</span><br><span class="line">   </span>|<span class="string">       </span>|<span class="string">- project3</span><br><span class="line">   </span>|<span class="string">       </span>|<span class="string">- project4</span><br><span class="line">   </span>|<span class="string">       </span>|<span class="string">- project5</span><br><span class="line">   </span>|<span class="string">       </span>|<span class="string">- project6</span><br><span class="line">   </span>|<span class="string">—— project:</span><br><span class="line">           </span>|<span class="string">- project0</span></span><br></pre></td></tr></table></figure>
+<blockquote>
+<pre><code>project0 为主工程，project0 依赖项目 project1,project2,project3,project4
+project4  依赖 project5，project6
+</code></pre></blockquote>
+<h2 id="u4E09_u3001settings-gradle_u914D_u7F6E"><a href="#u4E09_u3001settings-gradle_u914D_u7F6E" class="headerlink" title="三、settings.gradle配置"></a>三、settings.gradle配置</h2><blockquote>
+<p>一个多项目构建必须在根项目的根目录下包含settings.gradle文件，因为它指明了那些包含在多项目构建中的项目。</p>
+</blockquote>
+<p>项目文件根目录 demo下</p>
+<figure class="highlight 1c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">|—— demo：</span></span><br><span class="line">   <span class="string">|—— settings.gradle</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight cmake"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">include</span> ':<span class="keyword">project</span>:project0'</span><br><span class="line"><span class="keyword">include</span> ':<span class="keyword">project</span>:project1'</span><br><span class="line"><span class="keyword">include</span> ':<span class="keyword">project</span>:project2'</span><br><span class="line"><span class="keyword">include</span> ':<span class="keyword">project</span>:project3'</span><br><span class="line"><span class="keyword">include</span> ':<span class="keyword">project</span>:project4'</span><br><span class="line"><span class="keyword">include</span> ':<span class="keyword">project</span>:project5'</span><br><span class="line"><span class="keyword">include</span> ':<span class="keyword">project</span>:project5'</span><br><span class="line"><span class="keyword">include</span> ':<span class="keyword">project</span>:project6</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>此处的配置先后顺序是否有影响还待进一步验证（尝试更换了顺序，均可以构建成功，似乎会根据依赖关系自动分配顺序），欢迎朋友们指导。<br>记住主工程的项目project0以及被依赖的项目一定要在此配置，否则会出现错误，错误详情请<br><a href="http://blog.csdn.net/jf_1994/article/details/49645175" target="_blank" rel="external">点击：Eclipse转AndroidStuido天坑</a></p>
+</blockquote>
+<h2 id="u56DB_u3001build-gradle_u914D_u7F6E"><a href="#u56DB_u3001build-gradle_u914D_u7F6E" class="headerlink" title="四、build.gradle配置"></a>四、build.gradle配置</h2><ul>
+<li>项目文件根目录 demo下配置一个全局的build.gradle</li>
+</ul>
+<blockquote>
+<p> 如果需要在多项目构建的所有项目中加入公用的配置或行为，我们可以将这项配置加入到根项目的build.gradle文件中(使用allprojects)</p>
+</blockquote>
+<figure class="highlight 1c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">|—— demo：</span></span><br><span class="line">   <span class="string">|—— build.gradle</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight gradle"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Top-level build file where you can add configuration options common to all sub-projects/modules.</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">buildscript</span> &#123;</span><br><span class="line">    <span class="keyword">repositories</span> &#123;<span class="comment">//仓库</span></span><br><span class="line">        jcenter() </span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">dependencies</span> &#123;<span class="comment">//依赖</span></span><br><span class="line">        <span class="keyword">classpath</span> <span class="string">'com.android.tools.build:gradle:1.3.0'</span> <span class="comment">//！！！注意：2.5版本的gradle为1.3.0</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">subprojects</span>&#123;</span><br><span class="line">    <span class="comment">//add common configuration for sub-projects here </span></span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">allprojects</span> &#123;</span><br><span class="line">    <span class="comment">//Add configuration here</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>每个module根目录下配置一个build.gradle</li>
+</ul>
+<figure class="highlight 1c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">|—— demo：</span></span><br><span class="line">   <span class="string">|—— libproject:</span></span><br><span class="line">           <span class="string">|- project4</span></span><br><span class="line">                 <span class="string">|- build.gradle</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight gradle"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><span class="line">apply plugin: <span class="string">'com.android.library'</span> <span class="comment">//需要的插件</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">dependencies</span> &#123;</span><br><span class="line">    <span class="keyword">compile</span> <span class="keyword">fileTree</span>(dir: <span class="string">'libs'</span>, <span class="keyword">include</span>: <span class="string">'*.jar'</span>) <span class="comment">//依赖libs下的所有jar包</span></span><br><span class="line">    <span class="keyword">compile</span> <span class="keyword">project</span>(<span class="string">':libproject:project5'</span>)  <span class="comment">// project4 依赖 project5</span></span><br><span class="line">    <span class="keyword">compile</span> <span class="keyword">project</span>(<span class="string">':libproject:project6'</span>)  <span class="comment">// project4 依赖 project6</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">android &#123;</span><br><span class="line">    compileSdkVersion <span class="number">17</span>                    <span class="comment">//SDK版本 注意：被依赖的project5|6 不能高于project4</span></span><br><span class="line">    buildToolsVersion <span class="string">"23.0.1"</span></span><br><span class="line">    </span><br><span class="line">    lintOptions &#123;</span><br><span class="line">        abortOnError <span class="keyword">false</span></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">sourceSets</span> &#123;                           <span class="comment">//资源设置</span></span><br><span class="line">        main &#123;</span><br><span class="line">            manifest.srcFile <span class="string">'AndroidManifest.xml'</span></span><br><span class="line">            java.srcDirs = [<span class="string">'src'</span>]</span><br><span class="line">            resources.srcDirs = [<span class="string">'src'</span>]</span><br><span class="line">            aidl.srcDirs = [<span class="string">'src'</span>]</span><br><span class="line">            renderscript.srcDirs = [<span class="string">'src'</span>]</span><br><span class="line">            res.srcDirs = [<span class="string">'res'</span>]</span><br><span class="line">            assets.srcDirs = [<span class="string">'assets'</span>]</span><br><span class="line">            jniLibs.srcDirs = [<span class="string">'libs'</span>]           <span class="comment">//注意：引用libs文件夹中的so，需要该属性</span></span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="comment">// Move the tests to tests/java, tests/res, etc...</span></span><br><span class="line">        instrumentTest.setRoot(<span class="string">'tests'</span>)</span><br><span class="line"></span><br><span class="line">        <span class="comment">// Move the build types to build-types/&lt;type&gt;</span></span><br><span class="line">        <span class="comment">// For instance, build-types/debug/java, build-types/debug/AndroidManifest.xml, ...</span></span><br><span class="line">        <span class="comment">// This moves them out of them default location under src/&lt;type&gt;/... which would</span></span><br><span class="line">        <span class="comment">// conflict with src/ being used by the main source set.</span></span><br><span class="line">        <span class="comment">// Adding new build types or product flavors should be accompanied</span></span><br><span class="line">        <span class="comment">// by a similar customization.</span></span><br><span class="line">        debug.setRoot(<span class="string">'build-types/debug'</span>)</span><br><span class="line">        release.setRoot(<span class="string">'build-types/release'</span>)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="u4E94_u3001_u6784_u5EFA_u9879_u76EE_u3001_u6267_u884Cgradle_u547D_u4EE4"><a href="#u4E94_u3001_u6784_u5EFA_u9879_u76EE_u3001_u6267_u884Cgradle_u547D_u4EE4" class="headerlink" title="五、构建项目、执行gradle命令"></a>五、构建项目、执行gradle命令</h2><ul>
+<li>构建项目一: 在项目根目录demo下执行如下doc命令</li>
+</ul>
+<figure class="highlight nginx"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="title">gradle</span> projects</span><br></pre></td></tr></table></figure>
+<p><img src="http://img.blog.csdn.net/20151110203839976" alt="构建中"><br><figure class="highlight gradle"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">&gt; gradle projects</span><br><span class="line">:projects</span><br><span class="line"> </span><br><span class="line"> </span><br><span class="line">------------------------------------------------------------</span><br><span class="line">Root <span class="keyword">project</span></span><br><span class="line">------------------------------------------------------------</span><br><span class="line"> </span><br><span class="line">Root <span class="keyword">project</span> <span class="string">'demo'</span></span><br><span class="line">+--- <span class="keyword">Project</span> <span class="string">':libproject'</span></span><br><span class="line">      --- <span class="keyword">Project</span> <span class="string">':project1'</span></span><br><span class="line">      --- <span class="keyword">Project</span> <span class="string">':project2'</span></span><br><span class="line">      --- <span class="keyword">Project</span> <span class="string">':project3'</span></span><br><span class="line">      --- <span class="keyword">Project</span> <span class="string">':project4'</span></span><br><span class="line">	  --- <span class="keyword">Project</span> <span class="string">':project5'</span></span><br><span class="line">      --- <span class="keyword">Project</span> <span class="string">':project6'</span></span><br><span class="line">\--- <span class="keyword">Project</span> <span class="string">':project'</span></span><br><span class="line">     \--- <span class="keyword">Project</span> <span class="string">':project0'</span></span><br><span class="line">      </span><br><span class="line"> </span><br><span class="line">To see a list of the tasks of a <span class="keyword">project</span>, run gradle &lt;<span class="keyword">project</span>-path&gt;:tasks</span><br><span class="line"><span class="keyword">For</span> example, <span class="keyword">try</span> running gradle :app:tasks</span><br><span class="line"> </span><br><span class="line">BUILD SUCCESSFUL</span><br></pre></td></tr></table></figure></p>
+<ul>
+<li>构建项目二: 在项目根目录demo下执行如下doc命令</li>
+</ul>
+<figure class="highlight nginx"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="title">gradle</span> build</span><br></pre></td></tr></table></figure>
+<p>此刻有点像Ant编译一样，耐心等待<br><img src="http://img.blog.csdn.net/20151110205057447" alt="这里写图片描述"></p>
+<p>now, build succesful, 最喜欢看到这个句啦！<br>此时查看项目目录，发生了变化</p>
+<figure class="highlight gherkin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line">|<span class="string">—— demo：</span><br><span class="line">   </span>|<span class="string">——.gradle</span><br><span class="line">   </span>|<span class="string">—— libproject:</span><br><span class="line">   </span>|<span class="string">       </span>|<span class="string">- project1</span><br><span class="line">   </span>|<span class="string">       </span>|<span class="string">     </span>|<span class="string">-build.gradle</span><br><span class="line">   </span>|<span class="string">       </span>|</span><br><span class="line">   |<span class="string">       </span>|<span class="string">- project2</span><br><span class="line">   </span>|<span class="string">       </span>|<span class="string">- project3</span><br><span class="line">   </span>|<span class="string">       </span>|<span class="string">- project4    //文件太多 不一一写出</span><br><span class="line">   </span>|<span class="string">       </span>|<span class="string">- project5</span><br><span class="line">   </span>|<span class="string">       </span>|<span class="string">- project6</span><br><span class="line">   </span>|</span><br><span class="line">   |<span class="string">—— project:</span><br><span class="line">   </span>|<span class="string">       </span>|<span class="string">- project0</span><br><span class="line">   </span>|<span class="string">			  </span>|<span class="string">-build.gradle</span><br><span class="line">   </span>|<span class="string">			  </span>|<span class="string">—build</span><br><span class="line">   </span>|<span class="string">				  </span>|<span class="string">—outputs</span><br><span class="line">   </span>|<span class="string">					  </span>|<span class="string">-apk</span><br><span class="line">   </span>|<span class="string">						  </span>|<span class="string">-project0.apk</span><br><span class="line">   </span>|<span class="string">						  </span>|<span class="string">- ...</span><br><span class="line">   </span>|<span class="string">			  </span>|<span class="string">-.......文件太多 不一一写出啦</span><br><span class="line">   </span>|<span class="string">—— gradle</span><br><span class="line">   </span>|<span class="string">       </span>|<span class="string">——wrapper</span><br><span class="line">   </span>|<span class="string">	        </span>|<span class="string">——gradle-wrapper.jar</span><br><span class="line">   </span>|<span class="string">	        </span>|<span class="string">——gradle-wrapper.properties</span><br><span class="line">   </span>|<span class="string">—— build </span><br><span class="line">   </span>|<span class="string">—— build.gradle</span><br><span class="line">   </span>|<span class="string">—— settings.gradle</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li>清除构建：在项目根目录demo下执行如下doc命令</li>
+</ul>
+<figure class="highlight nginx"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="title">gradle</span> clean</span><br></pre></td></tr></table></figure>
+<p>此操作类似ant 编译中的ant clean 命令，会清除构建生成的文件，方便下一次构建。</p>
+<blockquote>
+<p>推荐参考：</p>
+<p><a href="http://blog.jobbole.com/71999/" target="_blank" rel="external">Gradle入门</a> 有源码实践操作，理解起来很方便。</p>
+</blockquote>
+<p>曾尝试在在项目根目录下的build.gradle把所有的子项目的配置也写在这里，执行错误，报错：manifest.srcFile ‘AndroidManifest.xml’ 这里的路径有问题，还待进一步解决，期待各位朋友指导！</p>
+  
+	</div>
+		<footer class="article-footer clearfix">
+<div class="article-catetags">
+
+<div class="article-categories">
+  <span></span>
+  <a class="article-category-link" href="/categories/Android/">Android</a>
+</div>
+
+
+  <div class="article-tags">
+  
+  <span></span> <a href="/tags/AndroidStudio/">AndroidStudio</a>
+  </div>
+
+</div>
+
+
+
+	<div class="article-share" id="share">
+	
+	  <div data-url="http://zengjingfang.cn/2015/11/15/AndroidStudio快速入门二：Gradle快速构建Android项目（多个Module同时构建）/" data-title="AndroidStudio快速入门二：Gradle快速构建Android项目（多个Module同时构建） | ZengJingFang|Blog" data-tsina="null" class="share clearfix">
+	  </div>
+	
+	</div>
+
+
+</footer>
+
+   	       
+	</article>
+	
+<nav class="article-nav clearfix">
+ 
+ <div class="prev" >
+ <a href="/2015/11/15/AndroidStudio快速入门一：将Eclipse项目导入AndroidStudio/" title="AndroidStudio快速入门一：将Eclipse项目导入AndroidStudio">
+  <strong>上一篇：</strong><br/>
+  <span>
+  AndroidStudio快速入门一：将Eclipse项目导入AndroidStudio</span>
+</a>
+</div>
+
+
+<div class="next">
+<a href="/2015/11/15/AndroidStudio快速入门三：aar和jar 生成和导入项目/"  title="AndroidStudio快速入门三：aar和jar 生成和导入项目">
+ <strong>下一篇：</strong><br/> 
+ <span>AndroidStudio快速入门三：aar和jar 生成和导入项目
+</span>
+</a>
+</div>
+
+</nav>
+
+	
+
+</div>  
+      <div class="openaside"><a class="navbutton" href="#" title="顯示側邊欄"></a></div>
+
+  <div id="toc" class="toc-aside">
+  <strong class="toc-title">文章目錄</strong>
+ 
+ <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#u4E00_u3001Gradle_u51C6_u5907"><span class="toc-number">1.</span> <span class="toc-text">一、Gradle准备</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#u4E8C_u3001_u6F14_u793A_u9879_u76EE_u7684_u9879_u76EE_u7ED3_u6784"><span class="toc-number">2.</span> <span class="toc-text">二、演示项目的项目结构</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#u4E09_u3001settings-gradle_u914D_u7F6E"><span class="toc-number">3.</span> <span class="toc-text">三、settings.gradle配置</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#u56DB_u3001build-gradle_u914D_u7F6E"><span class="toc-number">4.</span> <span class="toc-text">四、build.gradle配置</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#u4E94_u3001_u6784_u5EFA_u9879_u76EE_u3001_u6267_u884Cgradle_u547D_u4EE4"><span class="toc-number">5.</span> <span class="toc-text">五、构建项目、执行gradle命令</span></a></li></ol>
+ 
+  </div>
+
+<div id="asidepart">
+<div class="closeaside"><a class="closebutton" href="#" title="隱藏側邊欄"></a></div>
+<aside class="clearfix">
+
+  
+
+
+  
+<div class="categorieslist">
+	<p class="asidetitle">分類</p>
+		<ul>
+		
+		  
+			<li><a href="/categories/Android/" title="Android">Android<sup>5</sup></a></li>
+		  
+		
+		  
+		
+		</ul>
+</div>
+
+
+  
+<div class="tagslist">
+	<p class="asidetitle">標簽</p>
+		<ul class="clearfix">
+		
+			
+				<li><a href="/tags/AndroidStudio/" title="AndroidStudio">AndroidStudio<sup>5</sup></a></li>
+			
+		
+			
+		
+		</ul>
+</div>
+
+
+  <div class="linkslist">
+  <p class="asidetitle">友情鏈接</p>
+    <ul>
+        
+          <li>
+            
+            	<a href="http://blog.csdn.net/jf_1994" target="_blank" title="井方哥的博客">CSDN</a>
+            
+          </li>
+        
+    </ul>
+</div>
+
+  
+
+
+</aside>
+</div>
+    </div>
+    <footer><div id="footer" >
+	
+	<div class="line">
+		<span></span>
+		<div class="author"></div>
+	</div>
+	
+	
+	<section class="info">
+		<p> Change is not merely necessary to life <br/>
+			                            it is life.</p>
+	</section>
+	 
+	<div class="social-font" class="clearfix">
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+	</div>
+			
+		
+
+		<p class="copyright">
+		Powered by <a href="http://hexo.io" target="_blank" title="hexo">hexo</a> and Theme by <a href="https://github.com/wuchong/jacman" target="_blank" title="Jacman">Jacman</a> © 2015 
+		
+		<a href="/about" target="_blank" title="zengjingfang">zengjingfang</a>
+		
+		
+		</p>
+</div>
+</footer>
+    <script src="/js/jquery-2.0.3.min.js"></script>
+<script src="/js/jquery.imagesloaded.min.js"></script>
+<script src="/js/gallery.js"></script>
+<script src="/js/jquery.qrcode-0.12.0.min.js"></script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.navbar').click(function(){
+    $('header nav').toggleClass('shownav');
+  });
+  var myWidth = 0;
+  function getSize(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+  };
+  var m = $('#main'),
+      a = $('#asidepart'),
+      c = $('.closeaside'),
+      o = $('.openaside');
+  c.click(function(){
+    a.addClass('fadeOut').css('display', 'none');
+    o.css('display', 'block').addClass('fadeIn');
+    m.addClass('moveMain');
+  });
+  o.click(function(){
+    o.css('display', 'none').removeClass('beforeFadeIn');
+    a.css('display', 'block').removeClass('fadeOut').addClass('fadeIn');      
+    m.removeClass('moveMain');
+  });
+  $(window).scroll(function(){
+    o.css("top",Math.max(80,260-$(this).scrollTop()));
+  });
+  
+  $(window).resize(function(){
+    getSize(); 
+    if (myWidth >= 1024) {
+      $('header nav').removeClass('shownav');
+    }else{
+      m.removeClass('moveMain');
+      a.css('display', 'block').removeClass('fadeOut');
+      o.css('display', 'none');
+      
+      $('#toc.toc-aside').css('display', 'none');
+        
+    }
+  });
+});
+</script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var ai = $('.article-content>iframe'),
+      ae = $('.article-content>embed'),
+      t  = $('#toc'),
+      ta = $('#toc.toc-aside'),
+      o  = $('.openaside'),
+      c  = $('.closeaside');
+  if(ai.length>0){
+    ai.wrap('<div class="video-container" />');
+  };
+  if(ae.length>0){
+   ae.wrap('<div class="video-container" />');
+  };
+  c.click(function(){
+    ta.css('display', 'block').addClass('fadeIn');
+  });
+  o.click(function(){
+    ta.css('display', 'none');
+  });
+  $(window).scroll(function(){
+    ta.css("top",Math.max(140,320-$(this).scrollTop()));
+  });
+});
+</script>
+
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var $this = $('.share'),
+      url = $this.attr('data-url'),
+      encodedUrl = encodeURIComponent(url),
+      title = $this.attr('data-title'),
+      tsina = $this.attr('data-tsina'),
+      description = $this.attr('description');
+  var html = [
+  '<div class="hoverqrcode clearfix"></div>',
+  '<a class="overlay" id="qrcode"></a>',
+  '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="article-share-facebook" target="_blank" title="Facebook"></a>',
+  '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="article-share-twitter" target="_blank" title="Twitter"></a>',
+  '<a href="#qrcode" class="article-share-qrcode" title="微信"></a>',
+  '<a href="http://widget.renren.com/dialog/share?resourceUrl=' + encodedUrl + '&srcUrl=' + encodedUrl + '&title=' + title +'" class="article-share-renren" target="_blank" title="人人"></a>',
+  '<a href="http://service.weibo.com/share/share.php?title='+title+'&url='+encodedUrl +'&ralateUid='+ tsina +'&searchPic=true&style=number' +'" class="article-share-weibo" target="_blank" title="微博"></a>',
+  '<span title="Share to"></span>'
+  ].join('');
+  $this.append(html);
+
+  $('.hoverqrcode').hide();
+
+  var myWidth = 0;
+  function updatehoverqrcode(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+    var qrsize = myWidth > 1024 ? 200:100;
+    var options = {render: 'image', size: qrsize, fill: '#2ca6cb', text: url, radius: 0.5, quiet: 1};
+    var p = $('.article-share-qrcode').position();
+    $('.hoverqrcode').empty().css('width', qrsize).css('height', qrsize)
+                          .css('left', p.left-qrsize/2+20).css('top', p.top-qrsize-10)
+                          .qrcode(options);
+  };
+  $(window).resize(function(){
+    $('.hoverqrcode').hide();
+  });
+  $('.article-share-qrcode').click(function(){
+    updatehoverqrcode();
+    $('.hoverqrcode').toggle();
+  });
+  $('.article-share-qrcode').hover(function(){}, function(){
+      $('.hoverqrcode').hide();
+  });
+});   
+</script>
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.article-content').each(function(i){
+    $(this).find('img').each(function(){
+      if ($(this).parent().hasClass('fancybox')) return;
+      var alt = this.alt;
+      if (alt) $(this).after('<span class="caption">' + alt + '</span>');
+      $(this).wrap('<a href="' + this.src + '" title="' + alt + '" class="fancybox"></a>');
+    });
+    $(this).find('.fancybox').each(function(){
+      $(this).attr('rel', 'article' + i);
+    });
+  });
+  if($.fancybox){
+    $('.fancybox').fancybox();
+  }
+}); 
+</script>
+
+
+
+<!-- Analytics Begin -->
+
+
+
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "//hm.baidu.com/hm.js?e6d1f421bbc9962127a50488f9ed37d1";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+
+
+<!-- Analytics End -->
+
+<!-- Totop Begin -->
+
+	<div id="totop">
+	<a title="返回頂部"><img src="/img/scrollup.png"/></a>
+	</div>
+	<script src="/js/totop.js"></script>
+
+<!-- Totop End -->
+
+<!-- MathJax Begin -->
+<!-- mathjax config similar to math.stackexchange -->
+
+
+<!-- MathJax End -->
+
+<!-- Tiny_search Begin -->
+
+<!-- Tiny_search End -->
+
+  </body>
+</html>

@@ -1,0 +1,503 @@
+
+ <!DOCTYPE HTML>
+<html >
+<head>
+  <meta charset="UTF-8">
+  
+    <title>AndroidStudio快速入门五：常见问题集合 | ZengJingFang|Blog</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
+    
+    <meta name="author" content="zengjingfang">
+    
+
+    
+    <meta name="description" content="前言:本篇主要收集在使用as中碰见的一些问题，方便查阅，也分享给朋友们。
+1、 Gradle Sync Failed问题: error:project with path’:libproject:project1’ could not be found in project ‘:project 2’. 
+分析：这里是因为在主工程的settings.gradle 文件中没有配置 project1解决">
+<meta property="og:type" content="article">
+<meta property="og:title" content="AndroidStudio快速入门五：常见问题集合">
+<meta property="og:url" content="http://zengjingfang.cn/2015/11/15/AndroidStudio快速入门五：常见问题集合/index.html">
+<meta property="og:site_name" content="ZengJingFang|Blog">
+<meta property="og:description" content="前言:本篇主要收集在使用as中碰见的一些问题，方便查阅，也分享给朋友们。
+1、 Gradle Sync Failed问题: error:project with path’:libproject:project1’ could not be found in project ‘:project 2’. 
+分析：这里是因为在主工程的settings.gradle 文件中没有配置 project1解决">
+<meta property="og:image" content="http://7xoq4d.com1.z0.glb.clouddn.com/as%7BD5BA87FE-358A-40C6-B5D0-0EF8F149C703%7D.png?attname=&e=1449665056&token=dDQYTry5zke_2YwAfs6GWn4lbjAOS7r4b3iCX-Kc:LHOqjBcSPJ33ZQIAKfBf-on1J1U">
+<meta property="og:image" content="http://7xoq4d.com1.z0.glb.clouddn.com/as120804.jpg?attname=&e=1449665575&token=dDQYTry5zke_2YwAfs6GWn4lbjAOS7r4b3iCX-Kc:oxUMH5qPJQ1O7RHdMG_Z8szq0HM">
+<meta property="og:updated_time" content="2015-12-30T14:15:49.205Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="AndroidStudio快速入门五：常见问题集合">
+<meta name="twitter:description" content="前言:本篇主要收集在使用as中碰见的一些问题，方便查阅，也分享给朋友们。
+1、 Gradle Sync Failed问题: error:project with path’:libproject:project1’ could not be found in project ‘:project 2’. 
+分析：这里是因为在主工程的settings.gradle 文件中没有配置 project1解决">
+
+    
+    <link rel="alternative" href="/atom.xml" title="ZengJingFang|Blog" type="application/atom+xml">
+    
+    
+    <link rel="icon" href="/img/favicon.ico">
+    
+    
+    <link rel="apple-touch-icon" href="/img/jacman.jpg">
+    <link rel="apple-touch-icon-precomposed" href="/img/jacman.jpg">
+    
+    <link rel="stylesheet" href="/css/style.css" type="text/css">
+</head>
+
+  <body>
+    <header>
+      
+<div>
+		
+			<div id="imglogo">
+				<a href="/"><img src="/img/logo.png" alt="ZengJingFang|Blog" title="ZengJingFang|Blog"/></a>
+			</div>
+			
+			<div id="textlogo">
+				<h1 class="site-name"><a href="/" title="ZengJingFang|Blog">ZengJingFang|Blog</a></h1>
+				<h2 class="blog-motto">www.zengjingfang.cn</h2>
+			</div>
+			<div class="navbar"><a class="navbutton navmobile" href="#" title="菜單">
+			</a></div>
+			<nav class="animated">
+				<ul>
+					<ul>
+					 
+						<li><a href="/">主页|Home</a></li>
+					
+						<li><a href="/archives">归档|Archives</a></li>
+					
+						<li><a href="/about">关于|About</a></li>
+					
+					<li>
+ 					
+					<form class="search" action="//google.com/search" method="get" accept-charset="utf-8">
+						<label>Search</label>
+						<input type="search" id="search" name="q" autocomplete="off" maxlength="20" placeholder="搜索" />
+						<input type="hidden" name="q" value="site:zengjingfang.cn">
+					</form>
+					
+					</li>
+				</ul>
+			</nav>			
+</div>
+    </header>
+    <div id="container">
+      <div id="main" class="post" itemscope itemprop="blogPost">
+  
+	<article itemprop="articleBody"> 
+		<header class="article-info clearfix">
+  <h1 itemprop="name">
+    
+      <a href="/2015/11/15/AndroidStudio快速入门五：常见问题集合/" title="AndroidStudio快速入门五：常见问题集合" itemprop="url">AndroidStudio快速入门五：常见问题集合</a>
+  </h1>
+  <p class="article-author">By
+       
+		<a href="/about" title="zengjingfang" target="_blank" itemprop="author">zengjingfang</a>
+		
+  <p class="article-time">
+    <time datetime="2015-11-15T13:31:42.000Z" itemprop="datePublished"> 發表於 2015-11-15</time>
+    
+  </p>
+</header>
+	<div class="article-content">
+		
+		<div id="toc" class="toc-article">
+			<strong class="toc-title">文章目錄</strong>
+		
+			<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#1_u3001_Gradle_Sync_Failed"><span class="toc-number">1.</span> <span class="toc-text">1、 Gradle Sync Failed</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2_u3001cant_resolve_symbol"><span class="toc-number">2.</span> <span class="toc-text">2、cant resolve symbol</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3_u3001Error_3AExecution_failed_for_task__u2018_3Aapp_3AdexDebug_u2019"><span class="toc-number">3.</span> <span class="toc-text">3、Error:Execution failed for task ‘:app:dexDebug’.</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4_u3001Unable_to_load_class__u2018org-codehaus-groovy-runtime-StringGroovyMethords_u2019"><span class="toc-number">4.</span> <span class="toc-text">4、Unable to load class ‘org.codehaus.groovy.runtime.StringGroovyMethords’</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5_u3001Error_3AExecution_failed_for_task__u2018_3Aproject_3Ademo_3AprocessDebugManifest_u2019"><span class="toc-number">5.</span> <span class="toc-text">5、Error:Execution failed for task ‘:project:demo:processDebugManifest’.</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#6_u3001Not_recognizing_known_sRGB_profile_that_has_been_edited"><span class="toc-number">6.</span> <span class="toc-text">6、Not recognizing known sRGB profile that has been edited</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#7_u3001Your_project_path_contains_non-ASCII_characters"><span class="toc-number">7.</span> <span class="toc-text">7、Your project path contains non-ASCII characters</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#8_u3001Error_3AExecution_failed_for_task__u2018_3Aapp_3AdexDebug_u2019"><span class="toc-number">8.</span> <span class="toc-text">8、Error:Execution failed for task ‘:app:dexDebug’.</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#9_u3001_u975E_u6CD5_u5B57_u7B26_3A__u2018_5Cufeff_u2019__u89E3_u51B3_u65B9_u6848_7C_u9519_u8BEF_3A__u9700_u8981class_2C_interface_u6216enum"><span class="toc-number">9.</span> <span class="toc-text">9、非法字符: ‘\ufeff’ 解决方案|错误: 需要class, interface或enum</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#10_u3001_lintOptions_false"><span class="toc-number">10.</span> <span class="toc-text">10、 lintOptions false</span></a></li></ol>
+		
+		</div>
+		
+		<p>前言:本篇主要收集在使用as中碰见的一些问题，方便查阅，也分享给朋友们。</p>
+<h2 id="1_u3001_Gradle_Sync_Failed"><a href="#1_u3001_Gradle_Sync_Failed" class="headerlink" title="1、 Gradle Sync Failed"></a>1、 Gradle Sync Failed</h2><p>问题: error:project with path’:libproject:project1’ could not be found in project ‘:project 2’. </p>
+<p>分析：这里是因为在主工程的settings.gradle 文件中没有配置 project1<br>解决：增加project1的配置，<a href="http://blog.csdn.net/jf_1994/article/details/49645175" target="_blank" rel="external">详情请点击</a></p>
+<h2 id="2_u3001cant_resolve_symbol"><a href="#2_u3001cant_resolve_symbol" class="headerlink" title="2、cant resolve symbol"></a>2、cant resolve symbol</h2><p>问题：import的包均有问题，clean的过程中好了，但是clean完了之后又是这样，所有的工程均是如此，不是R文件的错误，代码可以编译成功，程序可以运行，但就是“全线飘红”，如图：<br><img src="http://7xoq4d.com1.z0.glb.clouddn.com/as%7BD5BA87FE-358A-40C6-B5D0-0EF8F149C703%7D.png?attname=&amp;e=1449665056&amp;token=dDQYTry5zke_2YwAfs6GWn4lbjAOS7r4b3iCX-Kc:LHOqjBcSPJ33ZQIAKfBf-on1J1U" alt="这里写图片描述"></p>
+<p>分析：由于电脑突然断电，as的缓存文件出现错误<br>解决：File –&gt;Invalidate Catches /Restart 重启</p>
+<h2 id="3_u3001Error_3AExecution_failed_for_task__u2018_3Aapp_3AdexDebug_u2019"><a href="#3_u3001Error_3AExecution_failed_for_task__u2018_3Aapp_3AdexDebug_u2019" class="headerlink" title="3、Error:Execution failed for task ‘:app:dexDebug’."></a>3、Error:Execution failed for task ‘:app:dexDebug’.</h2><p>Error:Execution failed for task ‘:app:dexDebug’.<br>com.android.ide.common.process.ProcessException: org.gradle.process.internal.ExecException: Process ‘command ‘C:\Program Files\Java\jdk1.8.0\bin\java.exe’’ finished with non-zero exit value 2</p>
+<p>分析：查看其它log内容，会提示有多余的包冲突，比如support.v4包<br>解决：删除多余的jar包</p>
+<h2 id="4_u3001Unable_to_load_class__u2018org-codehaus-groovy-runtime-StringGroovyMethords_u2019"><a href="#4_u3001Unable_to_load_class__u2018org-codehaus-groovy-runtime-StringGroovyMethords_u2019" class="headerlink" title="4、Unable to load class ‘org.codehaus.groovy.runtime.StringGroovyMethords’"></a>4、Unable to load class ‘org.codehaus.groovy.runtime.StringGroovyMethords’</h2><p>问题：Gradle版本不对应<br>解决：<br>\gradle\wrapper\gradle-wrapper.properties文件</p>
+<figure class="highlight elixir"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">distributionUrl=https\<span class="symbol">://services</span>.gradle.org/distributions/gradle-<span class="number">2.5</span>-all.zip</span><br></pre></td></tr></table></figure>
+<p>和build.gradle 文件 版本号对应<br>distributionUrl=https\://services.gradle.org/distributions/gradle-2.5-all.zip</p>
+<h2 id="5_u3001Error_3AExecution_failed_for_task__u2018_3Aproject_3Ademo_3AprocessDebugManifest_u2019"><a href="#5_u3001Error_3AExecution_failed_for_task__u2018_3Aproject_3Ademo_3AprocessDebugManifest_u2019" class="headerlink" title="5、Error:Execution failed for task ‘:project:demo:processDebugManifest’."></a>5、Error:Execution failed for task ‘:project:demo:processDebugManifest’.</h2><ul>
+<li>问题1：</li>
+</ul>
+<blockquote>
+<p>Error:Execution failed for task ‘:project:PrimaryListen:processDebugManifest’.<br>Manifest merger failed with multiple errors, see logs</p>
+</blockquote>
+<p>分析：AS相对Eclipse更加严格，demo主工程的Manifest.xml 中的Application 配置与 依赖工程的Manifest.xml 中的Application 配置相冲突</p>
+<p>解决：删除所有依赖工程的Manifest.xml 中的Application 配置</p>
+<ul>
+<li>问题2：</li>
+</ul>
+<blockquote>
+<p>Error:Execution failed for task ‘:project:demo:processDebugManifest’.<br>Manifest merger failed : uses-sdk:minSdkVersion 8 cannot be smaller<br>than version 14 declared in library<br>[demoRoot.libproject.demo1:unspecified]<br>E:-–demoRoot\project\demo\build\intermediates\exploded-aar\demoRoot.libproject.demo1\unspecified\AndroidManifest.xml<br>Suggestion: use tools:overrideLibrary=”com.demo.demojava” to force<br>usage</p>
+</blockquote>
+<p>分析：被依赖工程的版本号不能高于主工程的版本号<br>解决：修改版本号 minSdkVersion</p>
+<p><uses-sdk android:minsdkversion="8" android:targetsdkversion="16"></uses-sdk></p>
+<uses-sdk android:minsdkversion="15" android:targetsdkversion="16">
+
+<h2 id="6_u3001Not_recognizing_known_sRGB_profile_that_has_been_edited"><a href="#6_u3001Not_recognizing_known_sRGB_profile_that_has_been_edited" class="headerlink" title="6、Not recognizing known sRGB profile that has been edited"></a>6、Not recognizing known sRGB profile that has been edited</h2><p>问题：<br>AAPT err(1745145340):<br>E:*<strong>*</strong>\res\drawable-mdpi\addpressed.png: libpng warning: iCCP: Not recognizing known sRGB profile that has been edited<br>问题解析：<br>图片格式的原因，有一些网友是非png格式的图片（例如jpg格式等）而错误地采用了png为后缀。<br>详细解析：<a href="http://my.oschina.net/1pei/blog/479162" target="_blank" rel="external">http://my.oschina.net/1pei/blog/479162</a></p>
+<p>解决方案一：<br>使用图片格式转换工具 再次转换为png，覆盖源文件即可，注意，压缩选择为 0<br>小编使用的工具：<a href="http://cdn1.mydown.yesky.com/5666bdbd/70d8d5c8c48f50e9108175dee1808273/soft/201501/pconverter_setup_4.8.3.rar" target="_blank" rel="external">http://cdn1.mydown.yesky.com/5666bdbd/70d8d5c8c48f50e9108175dee1808273/soft/201501/pconverter_setup_4.8.3.rar</a></p>
+<p>解决方案二：<br>buildToolsVersion “23.0.1”<br>—&gt;<br>buildToolsVersion “19.1.0”</p>
+<h2 id="7_u3001Your_project_path_contains_non-ASCII_characters"><a href="#7_u3001Your_project_path_contains_non-ASCII_characters" class="headerlink" title="7、Your project path contains non-ASCII characters"></a>7、Your project path contains non-ASCII characters</h2><p>问题：<br><img src="http://7xoq4d.com1.z0.glb.clouddn.com/as120804.jpg?attname=&amp;e=1449665575&amp;token=dDQYTry5zke_2YwAfs6GWn4lbjAOS7r4b3iCX-Kc:oxUMH5qPJQ1O7RHdMG_Z8szq0HM" alt="这里写图片描述"></p>
+<p>分析：文件路径有中文<br>解决：修改路径为英文</p>
+<h2 id="8_u3001Error_3AExecution_failed_for_task__u2018_3Aapp_3AdexDebug_u2019"><a href="#8_u3001Error_3AExecution_failed_for_task__u2018_3Aapp_3AdexDebug_u2019" class="headerlink" title="8、Error:Execution failed for task ‘:app:dexDebug’."></a>8、Error:Execution failed for task ‘:app:dexDebug’.</h2><p>问题：<br>Error:Execution failed for task ‘:app:dexDebug’.<br> com.android.ide.common.process.ProcessException: org.gradle.process.internal.ExecException: Process ‘command ‘C:\Program Files\Java\jdk1.8.0\bin\java.exe’’ finished with non-zero exit value 2<br>分析：重复的jar包（相同的包名，但是文件不同（版本不同等））<br>解决：删除不需要的jar包</p>
+<p><strong>详解：</strong></p>
+<blockquote>
+<p>当多个项目有依赖关系，且使用了相同的Jar包，显然，这个时候我们不可能删除其中的jar包，但是一直报这个错，其实在AndroidStudio中，如果有相同jar包名的jar包，默认只会选用其中一个，但是这仅仅是包名相同，文件也相同（如support-v4.jar，如果版本相同，就不会存在冲突，如果不同，则会冲突报错）。</p>
+<p>如果你是从Eclispe转过来之类的操作，构建AndroidStudio项目内部的情况无从得知，如果还是报错，可以使用资源管理器搜索该jar包，删除构建生成的（gradle clean 命令或者执行clean操作不一定能够完全删除），仅留下源文件，再次build就可以啦。</p>
+</blockquote>
+<h2 id="9_u3001_u975E_u6CD5_u5B57_u7B26_3A__u2018_5Cufeff_u2019__u89E3_u51B3_u65B9_u6848_7C_u9519_u8BEF_3A__u9700_u8981class_2C_interface_u6216enum"><a href="#9_u3001_u975E_u6CD5_u5B57_u7B26_3A__u2018_5Cufeff_u2019__u89E3_u51B3_u65B9_u6848_7C_u9519_u8BEF_3A__u9700_u8981class_2C_interface_u6216enum" class="headerlink" title="9、非法字符: ‘\ufeff’ 解决方案|错误: 需要class, interface或enum"></a>9、非法字符: ‘\ufeff’ 解决方案|错误: 需要class, interface或enum</h2><p>分析：<br>Eclipse可以智能的把UTF-8+BOM文件转为普通的UTF-8文件，Android Studio还没有这个功能，所以使用Android Studio编译UTF-8+BOM编码的文件时会出现” 非法字符: ‘\ufeff’ “之类的错误</p>
+<p>解决：<br>使用notepad++或者其他编辑工具 格式转换为   UTF-8BOM格式编码</p>
+<h2 id="10_u3001_lintOptions_false"><a href="#10_u3001_lintOptions_false" class="headerlink" title="10、 lintOptions false"></a>10、 lintOptions false</h2><p>分析：<br>AndroidStudio编译条件过于严格，需要屏蔽掉lint检查</p>
+<figure class="highlight nginx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="title">lintOptions</span> &#123;</span><br><span class="line">     <span class="title">abortOnError</span> <span class="built_in">false</span></span><br><span class="line"> &#125;</span><br></pre></td></tr></table></figure>
+<p>11、</p>
+</uses-sdk>  
+	</div>
+		<footer class="article-footer clearfix">
+<div class="article-catetags">
+
+<div class="article-categories">
+  <span></span>
+  <a class="article-category-link" href="/categories/Android/">Android</a>
+</div>
+
+
+  <div class="article-tags">
+  
+  <span></span> <a href="/tags/AndroidStudio/">AndroidStudio</a>
+  </div>
+
+</div>
+
+
+
+	<div class="article-share" id="share">
+	
+	  <div data-url="http://zengjingfang.cn/2015/11/15/AndroidStudio快速入门五：常见问题集合/" data-title="AndroidStudio快速入门五：常见问题集合 | ZengJingFang|Blog" data-tsina="null" class="share clearfix">
+	  </div>
+	
+	</div>
+
+
+</footer>
+
+   	       
+	</article>
+	
+<nav class="article-nav clearfix">
+ 
+ <div class="prev" >
+ <a href="/2015/11/15/AndroidStudio快速入门四：打造你的开发工具，settings必备/" title="AndroidStudio快速入门四：打造你的开发工具，settings必备">
+  <strong>上一篇：</strong><br/>
+  <span>
+  AndroidStudio快速入门四：打造你的开发工具，settings必备</span>
+</a>
+</div>
+
+
+</nav>
+
+	
+
+</div>  
+      <div class="openaside"><a class="navbutton" href="#" title="顯示側邊欄"></a></div>
+
+  <div id="toc" class="toc-aside">
+  <strong class="toc-title">文章目錄</strong>
+ 
+ <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#1_u3001_Gradle_Sync_Failed"><span class="toc-number">1.</span> <span class="toc-text">1、 Gradle Sync Failed</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2_u3001cant_resolve_symbol"><span class="toc-number">2.</span> <span class="toc-text">2、cant resolve symbol</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3_u3001Error_3AExecution_failed_for_task__u2018_3Aapp_3AdexDebug_u2019"><span class="toc-number">3.</span> <span class="toc-text">3、Error:Execution failed for task ‘:app:dexDebug’.</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4_u3001Unable_to_load_class__u2018org-codehaus-groovy-runtime-StringGroovyMethords_u2019"><span class="toc-number">4.</span> <span class="toc-text">4、Unable to load class ‘org.codehaus.groovy.runtime.StringGroovyMethords’</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5_u3001Error_3AExecution_failed_for_task__u2018_3Aproject_3Ademo_3AprocessDebugManifest_u2019"><span class="toc-number">5.</span> <span class="toc-text">5、Error:Execution failed for task ‘:project:demo:processDebugManifest’.</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#6_u3001Not_recognizing_known_sRGB_profile_that_has_been_edited"><span class="toc-number">6.</span> <span class="toc-text">6、Not recognizing known sRGB profile that has been edited</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#7_u3001Your_project_path_contains_non-ASCII_characters"><span class="toc-number">7.</span> <span class="toc-text">7、Your project path contains non-ASCII characters</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#8_u3001Error_3AExecution_failed_for_task__u2018_3Aapp_3AdexDebug_u2019"><span class="toc-number">8.</span> <span class="toc-text">8、Error:Execution failed for task ‘:app:dexDebug’.</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#9_u3001_u975E_u6CD5_u5B57_u7B26_3A__u2018_5Cufeff_u2019__u89E3_u51B3_u65B9_u6848_7C_u9519_u8BEF_3A__u9700_u8981class_2C_interface_u6216enum"><span class="toc-number">9.</span> <span class="toc-text">9、非法字符: ‘\ufeff’ 解决方案|错误: 需要class, interface或enum</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#10_u3001_lintOptions_false"><span class="toc-number">10.</span> <span class="toc-text">10、 lintOptions false</span></a></li></ol>
+ 
+  </div>
+
+<div id="asidepart">
+<div class="closeaside"><a class="closebutton" href="#" title="隱藏側邊欄"></a></div>
+<aside class="clearfix">
+
+  
+
+
+  
+<div class="categorieslist">
+	<p class="asidetitle">分類</p>
+		<ul>
+		
+		  
+			<li><a href="/categories/Android/" title="Android">Android<sup>5</sup></a></li>
+		  
+		
+		  
+		
+		</ul>
+</div>
+
+
+  
+<div class="tagslist">
+	<p class="asidetitle">標簽</p>
+		<ul class="clearfix">
+		
+			
+				<li><a href="/tags/AndroidStudio/" title="AndroidStudio">AndroidStudio<sup>5</sup></a></li>
+			
+		
+			
+		
+		</ul>
+</div>
+
+
+  <div class="linkslist">
+  <p class="asidetitle">友情鏈接</p>
+    <ul>
+        
+          <li>
+            
+            	<a href="http://blog.csdn.net/jf_1994" target="_blank" title="井方哥的博客">CSDN</a>
+            
+          </li>
+        
+    </ul>
+</div>
+
+  
+
+
+</aside>
+</div>
+    </div>
+    <footer><div id="footer" >
+	
+	<div class="line">
+		<span></span>
+		<div class="author"></div>
+	</div>
+	
+	
+	<section class="info">
+		<p> Change is not merely necessary to life <br/>
+			                            it is life.</p>
+	</section>
+	 
+	<div class="social-font" class="clearfix">
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+	</div>
+			
+		
+
+		<p class="copyright">
+		Powered by <a href="http://hexo.io" target="_blank" title="hexo">hexo</a> and Theme by <a href="https://github.com/wuchong/jacman" target="_blank" title="Jacman">Jacman</a> © 2015 
+		
+		<a href="/about" target="_blank" title="zengjingfang">zengjingfang</a>
+		
+		
+		</p>
+</div>
+</footer>
+    <script src="/js/jquery-2.0.3.min.js"></script>
+<script src="/js/jquery.imagesloaded.min.js"></script>
+<script src="/js/gallery.js"></script>
+<script src="/js/jquery.qrcode-0.12.0.min.js"></script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.navbar').click(function(){
+    $('header nav').toggleClass('shownav');
+  });
+  var myWidth = 0;
+  function getSize(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+  };
+  var m = $('#main'),
+      a = $('#asidepart'),
+      c = $('.closeaside'),
+      o = $('.openaside');
+  c.click(function(){
+    a.addClass('fadeOut').css('display', 'none');
+    o.css('display', 'block').addClass('fadeIn');
+    m.addClass('moveMain');
+  });
+  o.click(function(){
+    o.css('display', 'none').removeClass('beforeFadeIn');
+    a.css('display', 'block').removeClass('fadeOut').addClass('fadeIn');      
+    m.removeClass('moveMain');
+  });
+  $(window).scroll(function(){
+    o.css("top",Math.max(80,260-$(this).scrollTop()));
+  });
+  
+  $(window).resize(function(){
+    getSize(); 
+    if (myWidth >= 1024) {
+      $('header nav').removeClass('shownav');
+    }else{
+      m.removeClass('moveMain');
+      a.css('display', 'block').removeClass('fadeOut');
+      o.css('display', 'none');
+      
+      $('#toc.toc-aside').css('display', 'none');
+        
+    }
+  });
+});
+</script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var ai = $('.article-content>iframe'),
+      ae = $('.article-content>embed'),
+      t  = $('#toc'),
+      ta = $('#toc.toc-aside'),
+      o  = $('.openaside'),
+      c  = $('.closeaside');
+  if(ai.length>0){
+    ai.wrap('<div class="video-container" />');
+  };
+  if(ae.length>0){
+   ae.wrap('<div class="video-container" />');
+  };
+  c.click(function(){
+    ta.css('display', 'block').addClass('fadeIn');
+  });
+  o.click(function(){
+    ta.css('display', 'none');
+  });
+  $(window).scroll(function(){
+    ta.css("top",Math.max(140,320-$(this).scrollTop()));
+  });
+});
+</script>
+
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var $this = $('.share'),
+      url = $this.attr('data-url'),
+      encodedUrl = encodeURIComponent(url),
+      title = $this.attr('data-title'),
+      tsina = $this.attr('data-tsina'),
+      description = $this.attr('description');
+  var html = [
+  '<div class="hoverqrcode clearfix"></div>',
+  '<a class="overlay" id="qrcode"></a>',
+  '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="article-share-facebook" target="_blank" title="Facebook"></a>',
+  '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="article-share-twitter" target="_blank" title="Twitter"></a>',
+  '<a href="#qrcode" class="article-share-qrcode" title="微信"></a>',
+  '<a href="http://widget.renren.com/dialog/share?resourceUrl=' + encodedUrl + '&srcUrl=' + encodedUrl + '&title=' + title +'" class="article-share-renren" target="_blank" title="人人"></a>',
+  '<a href="http://service.weibo.com/share/share.php?title='+title+'&url='+encodedUrl +'&ralateUid='+ tsina +'&searchPic=true&style=number' +'" class="article-share-weibo" target="_blank" title="微博"></a>',
+  '<span title="Share to"></span>'
+  ].join('');
+  $this.append(html);
+
+  $('.hoverqrcode').hide();
+
+  var myWidth = 0;
+  function updatehoverqrcode(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+    var qrsize = myWidth > 1024 ? 200:100;
+    var options = {render: 'image', size: qrsize, fill: '#2ca6cb', text: url, radius: 0.5, quiet: 1};
+    var p = $('.article-share-qrcode').position();
+    $('.hoverqrcode').empty().css('width', qrsize).css('height', qrsize)
+                          .css('left', p.left-qrsize/2+20).css('top', p.top-qrsize-10)
+                          .qrcode(options);
+  };
+  $(window).resize(function(){
+    $('.hoverqrcode').hide();
+  });
+  $('.article-share-qrcode').click(function(){
+    updatehoverqrcode();
+    $('.hoverqrcode').toggle();
+  });
+  $('.article-share-qrcode').hover(function(){}, function(){
+      $('.hoverqrcode').hide();
+  });
+});   
+</script>
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.article-content').each(function(i){
+    $(this).find('img').each(function(){
+      if ($(this).parent().hasClass('fancybox')) return;
+      var alt = this.alt;
+      if (alt) $(this).after('<span class="caption">' + alt + '</span>');
+      $(this).wrap('<a href="' + this.src + '" title="' + alt + '" class="fancybox"></a>');
+    });
+    $(this).find('.fancybox').each(function(){
+      $(this).attr('rel', 'article' + i);
+    });
+  });
+  if($.fancybox){
+    $('.fancybox').fancybox();
+  }
+}); 
+</script>
+
+
+
+<!-- Analytics Begin -->
+
+
+
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "//hm.baidu.com/hm.js?e6d1f421bbc9962127a50488f9ed37d1";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+
+
+<!-- Analytics End -->
+
+<!-- Totop Begin -->
+
+	<div id="totop">
+	<a title="返回頂部"><img src="/img/scrollup.png"/></a>
+	</div>
+	<script src="/js/totop.js"></script>
+
+<!-- Totop End -->
+
+<!-- MathJax Begin -->
+<!-- mathjax config similar to math.stackexchange -->
+
+
+<!-- MathJax End -->
+
+<!-- Tiny_search Begin -->
+
+<!-- Tiny_search End -->
+
+  </body>
+</html>

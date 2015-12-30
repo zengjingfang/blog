@@ -1,0 +1,521 @@
+
+ <!DOCTYPE HTML>
+<html >
+<head>
+  <meta charset="UTF-8">
+  
+    <title>AndroidStudio快速入门一：将Eclipse项目导入AndroidStudio | ZengJingFang|Blog</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
+    
+    <meta name="author" content="zengjingfang">
+    
+
+    
+    <meta name="description" content="一、AndroidStudio安装 关于安装的问题就不多说啦，下载点击安装，默认就是；
+ 需要注意的就是在安装后会出现：
+一直停留在fetching Android sdk compoment information界面，或者最终 fetching failed的情况；
+解决方法：关闭AS，找到安装目录下的 ***Bin\idea.properties 文件，在最后一行添加以下代码
+ 　 disa">
+<meta property="og:type" content="article">
+<meta property="og:title" content="AndroidStudio快速入门一：将Eclipse项目导入AndroidStudio">
+<meta property="og:url" content="http://zengjingfang.cn/2015/11/15/AndroidStudio快速入门一：将Eclipse项目导入AndroidStudio/index.html">
+<meta property="og:site_name" content="ZengJingFang|Blog">
+<meta property="og:description" content="一、AndroidStudio安装 关于安装的问题就不多说啦，下载点击安装，默认就是；
+ 需要注意的就是在安装后会出现：
+一直停留在fetching Android sdk compoment information界面，或者最终 fetching failed的情况；
+解决方法：关闭AS，找到安装目录下的 ***Bin\idea.properties 文件，在最后一行添加以下代码
+ 　 disa">
+<meta property="og:image" content="http://img.blog.csdn.net/20151104213925614">
+<meta property="og:image" content="http://img.blog.csdn.net/20151104215118953">
+<meta property="og:image" content="http://img.blog.csdn.net/20151104215251033">
+<meta property="og:image" content="http://img.blog.csdn.net/20151104220318801">
+<meta property="og:image" content="http://img.blog.csdn.net/20151104222608003">
+<meta property="og:image" content="http://img.blog.csdn.net/20151105221751169">
+<meta property="og:image" content="http://img.blog.csdn.net/20151105221836068">
+<meta property="og:image" content="http://img.blog.csdn.net/20151105222004132">
+<meta property="og:image" content="http://img.blog.csdn.net/20151105222050391">
+<meta property="og:updated_time" content="2015-12-30T14:07:58.799Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="AndroidStudio快速入门一：将Eclipse项目导入AndroidStudio">
+<meta name="twitter:description" content="一、AndroidStudio安装 关于安装的问题就不多说啦，下载点击安装，默认就是；
+ 需要注意的就是在安装后会出现：
+一直停留在fetching Android sdk compoment information界面，或者最终 fetching failed的情况；
+解决方法：关闭AS，找到安装目录下的 ***Bin\idea.properties 文件，在最后一行添加以下代码
+ 　 disa">
+
+    
+    <link rel="alternative" href="/atom.xml" title="ZengJingFang|Blog" type="application/atom+xml">
+    
+    
+    <link rel="icon" href="/img/favicon.ico">
+    
+    
+    <link rel="apple-touch-icon" href="/img/jacman.jpg">
+    <link rel="apple-touch-icon-precomposed" href="/img/jacman.jpg">
+    
+    <link rel="stylesheet" href="/css/style.css" type="text/css">
+</head>
+
+  <body>
+    <header>
+      
+<div>
+		
+			<div id="imglogo">
+				<a href="/"><img src="/img/logo.png" alt="ZengJingFang|Blog" title="ZengJingFang|Blog"/></a>
+			</div>
+			
+			<div id="textlogo">
+				<h1 class="site-name"><a href="/" title="ZengJingFang|Blog">ZengJingFang|Blog</a></h1>
+				<h2 class="blog-motto">www.zengjingfang.cn</h2>
+			</div>
+			<div class="navbar"><a class="navbutton navmobile" href="#" title="菜單">
+			</a></div>
+			<nav class="animated">
+				<ul>
+					<ul>
+					 
+						<li><a href="/">主页|Home</a></li>
+					
+						<li><a href="/archives">归档|Archives</a></li>
+					
+						<li><a href="/about">关于|About</a></li>
+					
+					<li>
+ 					
+					<form class="search" action="//google.com/search" method="get" accept-charset="utf-8">
+						<label>Search</label>
+						<input type="search" id="search" name="q" autocomplete="off" maxlength="20" placeholder="搜索" />
+						<input type="hidden" name="q" value="site:zengjingfang.cn">
+					</form>
+					
+					</li>
+				</ul>
+			</nav>			
+</div>
+    </header>
+    <div id="container">
+      <div id="main" class="post" itemscope itemprop="blogPost">
+  
+	<article itemprop="articleBody"> 
+		<header class="article-info clearfix">
+  <h1 itemprop="name">
+    
+      <a href="/2015/11/15/AndroidStudio快速入门一：将Eclipse项目导入AndroidStudio/" title="AndroidStudio快速入门一：将Eclipse项目导入AndroidStudio" itemprop="url">AndroidStudio快速入门一：将Eclipse项目导入AndroidStudio</a>
+  </h1>
+  <p class="article-author">By
+       
+		<a href="/about" title="zengjingfang" target="_blank" itemprop="author">zengjingfang</a>
+		
+  <p class="article-time">
+    <time datetime="2015-11-15T13:31:42.000Z" itemprop="datePublished"> 發表於 2015-11-15</time>
+    
+  </p>
+</header>
+	<div class="article-content">
+		
+		<div id="toc" class="toc-article">
+			<strong class="toc-title">文章目錄</strong>
+		
+			<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#u4E00_u3001AndroidStudio_u5B89_u88C5"><span class="toc-number">1.</span> <span class="toc-text">一、AndroidStudio安装</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#u4E8C_u3001Gradle_u51C6_u5907"><span class="toc-number">2.</span> <span class="toc-text">二、Gradle准备</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#u4E09_u3001Eclipse_u5BFC_u51FA_u9879_u76EE"><span class="toc-number">3.</span> <span class="toc-text">三、Eclipse导出项目</span></a></li></ol>
+		
+		</div>
+		
+		<h2 id="u4E00_u3001AndroidStudio_u5B89_u88C5"><a href="#u4E00_u3001AndroidStudio_u5B89_u88C5" class="headerlink" title="一、AndroidStudio安装"></a>一、AndroidStudio安装</h2><pre><code> 关于安装的问题就不多说啦，下载点击安装，默认就是；
+ 需要注意的就是在安装后会出现：
+一直停留在fetching Android sdk compoment information界面，或者最终 fetching failed的情况；
+解决方法：关闭AS，找到安装目录下的 ***Bin\idea.properties 文件，在最后一行添加以下代码
+ 　 disable.android.first.run=true
+</code></pre><h2 id="u4E8C_u3001Gradle_u51C6_u5907"><a href="#u4E8C_u3001Gradle_u51C6_u5907" class="headerlink" title="二、Gradle准备"></a>二、Gradle准备</h2><ol>
+<li>安装好AS后，有默认的Gradle,但是建议使用自己的Gradle,本人下载的 gradle-2.5-all版本；</li>
+<li>配置环境变量：<pre><code> GRADLE_HOME ==&gt;&gt;D:\Program Files\Android\Android Studio\gradle\gradle-2.5-all\gradle-2.5\bin;
+PATH ==&gt;&gt; %GRADLE_HOME%;
+</code></pre></li>
+<li>检验 ：<br>运行 gradle -v    如图  既是配置成功<br><img src="http://img.blog.csdn.net/20151104213925614" alt="gradle配置成功"></li>
+</ol>
+<h2 id="u4E09_u3001Eclipse_u5BFC_u51FA_u9879_u76EE"><a href="#u4E09_u3001Eclipse_u5BFC_u51FA_u9879_u76EE" class="headerlink" title="三、Eclipse导出项目"></a>三、Eclipse导出项目</h2><ul>
+<li><p>1、 保证项目编译运行正常，选中主工程，点击File/Export  选择Android/Generare Gradle build<br>files.如图</p>
+<p>  <img src="http://img.blog.csdn.net/20151104215118953" alt="这里写图片描述"><br>  选择所有的项目 Next Next Finish<br>  <img src="http://img.blog.csdn.net/20151104215251033" alt="这里写图片描述"><br>  <strong>这个地方注意 如果已经导出过一次 需要勾选</strong><br>  <img src="http://img.blog.csdn.net/20151104220318801" alt="这里写图片描述"><br>  如此项目便导出完成<br>  【注意】仔细查看每个工程是否成功导出，如果没有，请再次导出。判断依据是该工程下是否有生成build.gradle文件等。<br>  需要修改两个地方</p>
+</li>
+<li><p>2、项目根目录下的（与.gradle平级）的build.gradle文件；</p>
+</li>
+</ul>
+<pre><code>因为gradle2.5版本对应的是 1.3.0 暂且这么理解吧
+</code></pre><figure class="highlight gradle"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">buildscript</span> &#123;</span><br><span class="line">    <span class="keyword">repositories</span> &#123;</span><br><span class="line">        jcenter()</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">dependencies</span> &#123;</span><br><span class="line">        <span class="keyword">classpath</span> <span class="string">'com.android.tools.build:**gradle:1.3.0'</span>**</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>3、项目根目录\gradle\wrapper 下的gradle-wrapper.properties文件</li>
+</ul>
+<p>修改为安装版本对应的distributionUrl=https\://services.gradle.org/distributions/gradle-2.5-all.zip<br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="preprocessor">#Tue Nov <span class="number">03</span> <span class="number">09</span>:<span class="number">29</span>:<span class="number">30</span> CST <span class="number">2015</span></span></span><br><span class="line">distributionBase=GRADLE_USER_HOME</span><br><span class="line">distributionPath=wrapper/dists</span><br><span class="line">zipStoreBase=GRADLE_USER_HOME</span><br><span class="line">zipStorePath=wrapper/dists</span><br><span class="line">distributionUrl=https\:<span class="comment">//services.gradle.org/distributions/gradle-2.5-all.zip</span></span><br></pre></td></tr></table></figure></p>
+<ul>
+<li>4、查看 项目根目录下的 settings.gradle文件</li>
+</ul>
+<p>该项目的工程目录<br>lib  lib1<br>libproject project1<br>                 project2<br>                 project3<br>                 project4<br>                 project5<br>                 project6<br>project     mainproject<br>【天坑】小编在这里遇到一个天坑，由于我的Eclipse有问题，并不能一次性把项目导出完；<br>【查看】settings.gradle 会发现有部分的成功导出的项目。</p>
+<figure class="highlight elixir"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">include</span> <span class="string">':lib:lib1'</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">include</span> <span class="string">':libproject:project2'</span></span><br><span class="line"><span class="keyword">include</span> <span class="string">':libproject:project3'</span></span><br><span class="line"><span class="keyword">include</span> <span class="string">':libproject:project4'</span></span><br></pre></td></tr></table></figure>
+<p>【添加】手动添加其他没能一次导出成功的工程，如project5，project6.</p>
+<ul>
+<li>5、导入到AS  打开首页，选择Import project (Eclipse —-)</li>
+</ul>
+<p><img src="http://img.blog.csdn.net/20151104222608003" alt="这里写图片描述"><br>输入项目根目录、选中主工程下的build.gradle文件<br><img src="http://img.blog.csdn.net/20151105221751169" alt="这里写图片描述"><br>经过漫长的等待，如图<br><img src="http://img.blog.csdn.net/20151105221836068" alt="这里写图片描述"><br>终于导入啦</p>
+<ul>
+<li>6、【回到神坑】出现了 Gradle Sync Failed</li>
+</ul>
+<p>error:project with path’:libproject:project1’ could not be found in project ‘:project 2’.<br>其中：project2是依赖project1的<br><img src="http://img.blog.csdn.net/20151105222004132" alt="这里写图片描述"><br>按照提示 点击了open file<br><img src="http://img.blog.csdn.net/20151105222050391" alt="这里写图片描述"><br>作为一只菜鸟，还以为是project1的问题，其实不然<br>在【4】中已经有分析其原因了，修改如下，将 project1 添加到 settings.gradle 中</p>
+<figure class="highlight elixir"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">include</span> <span class="string">':libproject:project1'</span></span><br></pre></td></tr></table></figure>
+<p>感谢大神的搭救，回过头来才发现自己的错误。<br>于是，Gradle Sync Successful</p>
+<ul>
+<li>7、选择主工程 build -》clean project 进行编译</li>
+</ul>
+<p>由于android studio 对代码比较严格，安装提示一步步进行修改就可以啦。<br>如：<br>删除依赖工程的AndroidManifest.xml中 Application的配置<br>删除重复的string.xml的内容<br>。。。。<br>于是乎，you are successful！<br>更多问题请留言。</p>
+<blockquote>
+<p>方便真正理解AndroidStudio的构建过程，多个项目间的依赖关系如何构建，请阅读<a href="http://blog.csdn.net/jf_1994/article/details/49764123" target="_blank" rel="external">AndroidStudio快速入门二：Gradle快速构建Android项目（多个Module同时构建）</a>，一定会让你豁然开朗。</p>
+</blockquote>
+<p>重点推荐：AndroidStudio 与Gradle：<a href="http://blog.csdn.net/jf_1994/article/details/49764123" target="_blank" rel="external">http://blog.csdn.net/jf_1994/article/details/49764123</a></p>
+  
+	</div>
+		<footer class="article-footer clearfix">
+<div class="article-catetags">
+
+<div class="article-categories">
+  <span></span>
+  <a class="article-category-link" href="/categories/Android/">Android</a>
+</div>
+
+
+  <div class="article-tags">
+  
+  <span></span> <a href="/tags/AndroidStudio/">AndroidStudio</a>
+  </div>
+
+</div>
+
+
+
+	<div class="article-share" id="share">
+	
+	  <div data-url="http://zengjingfang.cn/2015/11/15/AndroidStudio快速入门一：将Eclipse项目导入AndroidStudio/" data-title="AndroidStudio快速入门一：将Eclipse项目导入AndroidStudio | ZengJingFang|Blog" data-tsina="null" class="share clearfix">
+	  </div>
+	
+	</div>
+
+
+</footer>
+
+   	       
+	</article>
+	
+<nav class="article-nav clearfix">
+ 
+
+<div class="next">
+<a href="/2015/11/15/AndroidStudio快速入门二：Gradle快速构建Android项目（多个Module同时构建）/"  title="AndroidStudio快速入门二：Gradle快速构建Android项目（多个Module同时构建）">
+ <strong>下一篇：</strong><br/> 
+ <span>AndroidStudio快速入门二：Gradle快速构建Android项目（多个Module同时构建）
+</span>
+</a>
+</div>
+
+</nav>
+
+	
+
+</div>  
+      <div class="openaside"><a class="navbutton" href="#" title="顯示側邊欄"></a></div>
+
+  <div id="toc" class="toc-aside">
+  <strong class="toc-title">文章目錄</strong>
+ 
+ <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#u4E00_u3001AndroidStudio_u5B89_u88C5"><span class="toc-number">1.</span> <span class="toc-text">一、AndroidStudio安装</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#u4E8C_u3001Gradle_u51C6_u5907"><span class="toc-number">2.</span> <span class="toc-text">二、Gradle准备</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#u4E09_u3001Eclipse_u5BFC_u51FA_u9879_u76EE"><span class="toc-number">3.</span> <span class="toc-text">三、Eclipse导出项目</span></a></li></ol>
+ 
+  </div>
+
+<div id="asidepart">
+<div class="closeaside"><a class="closebutton" href="#" title="隱藏側邊欄"></a></div>
+<aside class="clearfix">
+
+  
+
+
+  
+<div class="categorieslist">
+	<p class="asidetitle">分類</p>
+		<ul>
+		
+		  
+			<li><a href="/categories/Android/" title="Android">Android<sup>5</sup></a></li>
+		  
+		
+		  
+		
+		</ul>
+</div>
+
+
+  
+<div class="tagslist">
+	<p class="asidetitle">標簽</p>
+		<ul class="clearfix">
+		
+			
+				<li><a href="/tags/AndroidStudio/" title="AndroidStudio">AndroidStudio<sup>5</sup></a></li>
+			
+		
+			
+		
+		</ul>
+</div>
+
+
+  <div class="linkslist">
+  <p class="asidetitle">友情鏈接</p>
+    <ul>
+        
+          <li>
+            
+            	<a href="http://blog.csdn.net/jf_1994" target="_blank" title="井方哥的博客">CSDN</a>
+            
+          </li>
+        
+    </ul>
+</div>
+
+  
+
+
+</aside>
+</div>
+    </div>
+    <footer><div id="footer" >
+	
+	<div class="line">
+		<span></span>
+		<div class="author"></div>
+	</div>
+	
+	
+	<section class="info">
+		<p> Change is not merely necessary to life <br/>
+			                            it is life.</p>
+	</section>
+	 
+	<div class="social-font" class="clearfix">
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+	</div>
+			
+		
+
+		<p class="copyright">
+		Powered by <a href="http://hexo.io" target="_blank" title="hexo">hexo</a> and Theme by <a href="https://github.com/wuchong/jacman" target="_blank" title="Jacman">Jacman</a> © 2015 
+		
+		<a href="/about" target="_blank" title="zengjingfang">zengjingfang</a>
+		
+		
+		</p>
+</div>
+</footer>
+    <script src="/js/jquery-2.0.3.min.js"></script>
+<script src="/js/jquery.imagesloaded.min.js"></script>
+<script src="/js/gallery.js"></script>
+<script src="/js/jquery.qrcode-0.12.0.min.js"></script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.navbar').click(function(){
+    $('header nav').toggleClass('shownav');
+  });
+  var myWidth = 0;
+  function getSize(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+  };
+  var m = $('#main'),
+      a = $('#asidepart'),
+      c = $('.closeaside'),
+      o = $('.openaside');
+  c.click(function(){
+    a.addClass('fadeOut').css('display', 'none');
+    o.css('display', 'block').addClass('fadeIn');
+    m.addClass('moveMain');
+  });
+  o.click(function(){
+    o.css('display', 'none').removeClass('beforeFadeIn');
+    a.css('display', 'block').removeClass('fadeOut').addClass('fadeIn');      
+    m.removeClass('moveMain');
+  });
+  $(window).scroll(function(){
+    o.css("top",Math.max(80,260-$(this).scrollTop()));
+  });
+  
+  $(window).resize(function(){
+    getSize(); 
+    if (myWidth >= 1024) {
+      $('header nav').removeClass('shownav');
+    }else{
+      m.removeClass('moveMain');
+      a.css('display', 'block').removeClass('fadeOut');
+      o.css('display', 'none');
+      
+      $('#toc.toc-aside').css('display', 'none');
+        
+    }
+  });
+});
+</script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var ai = $('.article-content>iframe'),
+      ae = $('.article-content>embed'),
+      t  = $('#toc'),
+      ta = $('#toc.toc-aside'),
+      o  = $('.openaside'),
+      c  = $('.closeaside');
+  if(ai.length>0){
+    ai.wrap('<div class="video-container" />');
+  };
+  if(ae.length>0){
+   ae.wrap('<div class="video-container" />');
+  };
+  c.click(function(){
+    ta.css('display', 'block').addClass('fadeIn');
+  });
+  o.click(function(){
+    ta.css('display', 'none');
+  });
+  $(window).scroll(function(){
+    ta.css("top",Math.max(140,320-$(this).scrollTop()));
+  });
+});
+</script>
+
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var $this = $('.share'),
+      url = $this.attr('data-url'),
+      encodedUrl = encodeURIComponent(url),
+      title = $this.attr('data-title'),
+      tsina = $this.attr('data-tsina'),
+      description = $this.attr('description');
+  var html = [
+  '<div class="hoverqrcode clearfix"></div>',
+  '<a class="overlay" id="qrcode"></a>',
+  '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="article-share-facebook" target="_blank" title="Facebook"></a>',
+  '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="article-share-twitter" target="_blank" title="Twitter"></a>',
+  '<a href="#qrcode" class="article-share-qrcode" title="微信"></a>',
+  '<a href="http://widget.renren.com/dialog/share?resourceUrl=' + encodedUrl + '&srcUrl=' + encodedUrl + '&title=' + title +'" class="article-share-renren" target="_blank" title="人人"></a>',
+  '<a href="http://service.weibo.com/share/share.php?title='+title+'&url='+encodedUrl +'&ralateUid='+ tsina +'&searchPic=true&style=number' +'" class="article-share-weibo" target="_blank" title="微博"></a>',
+  '<span title="Share to"></span>'
+  ].join('');
+  $this.append(html);
+
+  $('.hoverqrcode').hide();
+
+  var myWidth = 0;
+  function updatehoverqrcode(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+    var qrsize = myWidth > 1024 ? 200:100;
+    var options = {render: 'image', size: qrsize, fill: '#2ca6cb', text: url, radius: 0.5, quiet: 1};
+    var p = $('.article-share-qrcode').position();
+    $('.hoverqrcode').empty().css('width', qrsize).css('height', qrsize)
+                          .css('left', p.left-qrsize/2+20).css('top', p.top-qrsize-10)
+                          .qrcode(options);
+  };
+  $(window).resize(function(){
+    $('.hoverqrcode').hide();
+  });
+  $('.article-share-qrcode').click(function(){
+    updatehoverqrcode();
+    $('.hoverqrcode').toggle();
+  });
+  $('.article-share-qrcode').hover(function(){}, function(){
+      $('.hoverqrcode').hide();
+  });
+});   
+</script>
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.article-content').each(function(i){
+    $(this).find('img').each(function(){
+      if ($(this).parent().hasClass('fancybox')) return;
+      var alt = this.alt;
+      if (alt) $(this).after('<span class="caption">' + alt + '</span>');
+      $(this).wrap('<a href="' + this.src + '" title="' + alt + '" class="fancybox"></a>');
+    });
+    $(this).find('.fancybox').each(function(){
+      $(this).attr('rel', 'article' + i);
+    });
+  });
+  if($.fancybox){
+    $('.fancybox').fancybox();
+  }
+}); 
+</script>
+
+
+
+<!-- Analytics Begin -->
+
+
+
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "//hm.baidu.com/hm.js?e6d1f421bbc9962127a50488f9ed37d1";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+
+
+<!-- Analytics End -->
+
+<!-- Totop Begin -->
+
+	<div id="totop">
+	<a title="返回頂部"><img src="/img/scrollup.png"/></a>
+	</div>
+	<script src="/js/totop.js"></script>
+
+<!-- Totop End -->
+
+<!-- MathJax Begin -->
+<!-- mathjax config similar to math.stackexchange -->
+
+
+<!-- MathJax End -->
+
+<!-- Tiny_search Begin -->
+
+<!-- Tiny_search End -->
+
+  </body>
+</html>
