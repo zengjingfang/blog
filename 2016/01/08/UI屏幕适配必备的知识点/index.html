@@ -4,42 +4,23 @@
 <head>
   <meta charset="UTF-8">
   
-    <title>AndroidStudio快速入门三：aar和jar 生成和导入项目 | ZengJingFang|Blog</title>
+    <title>UI屏幕适配必备的知识点 | ZengJingFang|Blog</title>
     <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
     
     <meta name="author" content="zengjingfang">
     
 
     
-    <meta name="description" content="前言：一般大一点的项目都会依赖多个项目或者第三方库，在使用Eclispe开发时，我们经常使用到 jar 包，但是接触到AndroidStudio后我们有了更好的打包方式，即aar。
-
-阅读之前，如果你对Gradle构建没有了解，请先阅读Gradle构建基础，方便本篇内容的理解。
-
-###一、aar和jar的生成###
-
-当改项目的build.gradle的配置中，插件为 com.android.l">
+    <meta name="description" content="进行屏幕适配不可不知的知识点，屏幕尺寸、分辨率、像素密度、dp、sp、weight，sw-xxx，最小宽度限定符，drawble的问题，图片资源内存解析，适配方法。掌握了这些，够你用啦！">
 <meta property="og:type" content="article">
-<meta property="og:title" content="AndroidStudio快速入门三：aar和jar 生成和导入项目">
-<meta property="og:url" content="http://blog.zengjingfang.cn/2015/11/15/AndroidStudio快速入门三：aar和jar 生成和导入项目/index.html">
+<meta property="og:title" content="UI屏幕适配必备的知识点">
+<meta property="og:url" content="http://blog.zengjingfang.cn/2016/01/08/UI屏幕适配必备的知识点/index.html">
 <meta property="og:site_name" content="ZengJingFang|Blog">
-<meta property="og:description" content="前言：一般大一点的项目都会依赖多个项目或者第三方库，在使用Eclispe开发时，我们经常使用到 jar 包，但是接触到AndroidStudio后我们有了更好的打包方式，即aar。
-
-阅读之前，如果你对Gradle构建没有了解，请先阅读Gradle构建基础，方便本篇内容的理解。
-
-###一、aar和jar的生成###
-
-当改项目的build.gradle的配置中，插件为 com.android.l">
-<meta property="og:image" content="http://7xoq4d.com1.z0.glb.clouddn.com/asaar.png?attname=&e=1448781124&token=dDQYTry5zke_2YwAfs6GWn4lbjAOS7r4b3iCX-Kc:6kIa5jhw47KoG_VgnJYXAD_QVtI">
-<meta property="og:updated_time" content="2015-12-30T14:15:21.435Z">
+<meta property="og:description" content="进行屏幕适配不可不知的知识点，屏幕尺寸、分辨率、像素密度、dp、sp、weight，sw-xxx，最小宽度限定符，drawble的问题，图片资源内存解析，适配方法。掌握了这些，够你用啦！">
+<meta property="og:updated_time" content="2016-01-08T13:18:26.501Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="AndroidStudio快速入门三：aar和jar 生成和导入项目">
-<meta name="twitter:description" content="前言：一般大一点的项目都会依赖多个项目或者第三方库，在使用Eclispe开发时，我们经常使用到 jar 包，但是接触到AndroidStudio后我们有了更好的打包方式，即aar。
-
-阅读之前，如果你对Gradle构建没有了解，请先阅读Gradle构建基础，方便本篇内容的理解。
-
-###一、aar和jar的生成###
-
-当改项目的build.gradle的配置中，插件为 com.android.l">
+<meta name="twitter:title" content="UI屏幕适配必备的知识点">
+<meta name="twitter:description" content="进行屏幕适配不可不知的知识点，屏幕尺寸、分辨率、像素密度、dp、sp、weight，sw-xxx，最小宽度限定符，drawble的问题，图片资源内存解析，适配方法。掌握了这些，够你用啦！">
 
     
     <link rel="alternative" href="/atom.xml" title="ZengJingFang|Blog" type="application/atom+xml">
@@ -99,14 +80,14 @@
 		<header class="article-info clearfix">
   <h1 itemprop="name">
     
-      <a href="/2015/11/15/AndroidStudio快速入门三：aar和jar 生成和导入项目/" title="AndroidStudio快速入门三：aar和jar 生成和导入项目" itemprop="url">AndroidStudio快速入门三：aar和jar 生成和导入项目</a>
+      <a href="/2016/01/08/UI屏幕适配必备的知识点/" title="UI屏幕适配必备的知识点" itemprop="url">UI屏幕适配必备的知识点</a>
   </h1>
   <p class="article-author">By
        
 		<a href="/about" title="zengjingfang" target="_blank" itemprop="author">zengjingfang</a>
 		
   <p class="article-time">
-    <time datetime="2015-11-15T13:31:42.000Z" itemprop="datePublished"> 發表於 2015-11-15</time>
+    <time datetime="2016-01-08T13:13:09.000Z" itemprop="datePublished"> 發表於 2016-01-08</time>
     
   </p>
 </header>
@@ -115,48 +96,156 @@
 		<div id="toc" class="toc-article">
 			<strong class="toc-title">文章目錄</strong>
 		
-			
+			<ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#u91CD_u8981_u6982_u5FF5"><span class="toc-number">1.</span> <span class="toc-text">重要概念</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#u5C4F_u5E55_u9002_u914D_u65B9_u6848"><span class="toc-number">2.</span> <span class="toc-text">屏幕适配方案</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#u81EA_u9002_u5E94_u7528_u6237_u754C_u9762"><span class="toc-number">3.</span> <span class="toc-text">自适应用户界面</span></a></li></ol>
 		
 		</div>
 		
-		<p>前言：一般大一点的项目都会依赖多个项目或者第三方库，在使用Eclispe开发时，我们经常使用到 jar 包，但是接触到AndroidStudio后我们有了更好的打包方式，即aar。</p>
-<blockquote>
-<p>阅读之前，如果你对Gradle构建没有了解，请先阅读<a href="http://blog.csdn.net/jf_1994/article/details/49764123" target="_blank" rel="external">Gradle构建基础</a>，方便本篇内容的理解。</p>
-</blockquote>
-<p>###一、aar和jar的生成###</p>
+		<p>Android手机的屏幕尺寸大小、分辨率大小各有不同，如果只是一套布局在不同的设备上所显示的效果会有不同。可以根据产品用户的对象进行有针对性的适配。</p>
+<h1 id="u91CD_u8981_u6982_u5FF5"><a href="#u91CD_u8981_u6982_u5FF5" class="headerlink" title="重要概念"></a>重要概念</h1><hr>
 <ul>
-<li><p>当改项目的build.gradle的配置中，插件为 com.android.library时：</p>
-<p>  apply plugin: ‘com.android.library’</p>
-</li>
-<li><p>可以认为该Moulde为一个依赖工程，编译该Moudle会自动生成 aar 和 jar.</p>
-</li>
-<li><p>生成的目录位置：</p>
-<p>  <strong>jar: library/build/intermediates/bundles/debug(release)/classes.jar</strong></p>
-<p>  <strong>aar: library/build/outputs/aar/demo.aar</strong></p>
-</li>
+<li>屏幕尺寸</li>
 </ul>
-<p>###二、arr和jar的区别###</p>
+<p>手机平板等设备对角线的长度，单位为inch（英寸）</p>
 <ul>
-<li>jar:仅打包了class文件和配置清单文件，其res等资源文件并没有进来  </li>
-<li>arr:打包了所有的class、res等资源文件</li>
+<li>屏幕分辨率</li>
 </ul>
-<p>###三、arr包在AndroidStudio中使用###</p>
+<p>横纵方向的像素点数</p>
 <ul>
-<li>复制demo.aar到libs目录下</li>
-<li>更改build.gradle配置</li>
+<li>屏幕像素密度</li>
 </ul>
-<pre><code>repositories {
-flatDir {
-dirs &apos;libs&apos;
-}
-}
-dependencies {
-        compile(name:&apos;demo&apos;, ext:&apos;aar&apos;)
-}
+<p>每英寸上的像素点数，单位dpi (dot per inch)</p>
+<ul>
+<li>举例</li>
+</ul>
+<p>尺寸：4.95 inch    屏幕分辨率：1920x1080   DPI=445</p>
+<p>计算：(√(1920^2+1080^2))/4.95=445dpi</p>
+<ul>
+<li>dp 当屏幕像素密度为160dpi 的时候 1dp=1px</li>
+</ul>
+<p>480x320 160dpi   1dp=1px</p>
+<p>800x480 240dpi   1dp=1.5px</p>
+<p>也就是说 一个dp实际铺满屏幕的长度随着分辨率的增大成比例增大</p>
+<ul>
+<li>sp 字体大小</li>
+</ul>
+<p>根据谷歌的设计，最好使用的字体大小为：12sp、14sp、18sp、22sp</p>
+<p>字体sp不要使用奇数或者小数，会引起精度的丢失</p>
+<ul>
+<li>mdpi res资源文件</li>
+</ul>
+<p>mdpi    120dpi ~ 160dpi    1x</p>
+<p>hdpi    160dpi ~ 240dpi    1.5x</p>
+<p>xhdpi   240dpi ~ 320dpi    2x</p>
+<p>xxhdpi  320dpi ~ 480dpi    3x</p>
+<p>xxxdpi  480dpi ~ 640dpi    4x</p>
+<h1 id="u5C4F_u5E55_u9002_u914D_u65B9_u6848"><a href="#u5C4F_u5E55_u9002_u914D_u65B9_u6848" class="headerlink" title="屏幕适配方案"></a>屏幕适配方案</h1><ul>
+<li>weight详解</li>
+</ul>
+<p>组件宽度=原来宽度+剩余空间所占百分比宽度</p>
+<p>屏幕宽度：L</p>
+<p>btn_1的宽度为：2/3L =L+(L-2L)*1/3</p>
+<pre><code>&lt;Button 
+ android:id=&quot;@+id/btn_1&quot;
+ android:layout_width=&quot;match_content&quot;
+ android:layout_height=&quot;wrap_content&quot;
+ android:weight=&quot;1&quot;
+ /&gt;
+
+ &lt;Button 
+ android:id=&quot;@+id/btn_2&quot;
+ android:layout_width=&quot;match_content&quot;
+ android:layout_height=&quot;wrap_content&quot;
+ android:weight=&quot;1&quot;
+ /&gt;
+
+ ——————————————————————————————
+ |       btn_1      |  btn_2   |
+ ——————————————————————————————
 </code></pre><ul>
-<li>重新编译一次，查看项目地址 ”\build\intermediates\exploded-aar\“ 你会发现下面多了一个文件夹 librarydemo 打开后能看见里边包含了一个 ”classes.jar“ 文件与一些 资源文件和”R.txt“文件 。</li>
+<li>使用限定符</li>
 </ul>
-<p><img src="http://7xoq4d.com1.z0.glb.clouddn.com/asaar.png?attname=&amp;e=1448781124&amp;token=dDQYTry5zke_2YwAfs6GWn4lbjAOS7r4b3iCX-Kc:6kIa5jhw47KoG_VgnJYXAD_QVtI" alt=""></p>
+<p>1、使用尺寸限定符 larger ,适用于3.2之前的版本</p>
+<p>res/layout/main.xml 手机</p>
+<p>res/layout-large/main.xml 平板</p>
+<p>2、最小宽度限定符 sw-xxx (Small Width),适用于3.2之后的版本</p>
+<p>res/layout/main.xml 手机使用</p>
+<p>res/layout-sw600dp/main.xml   最小宽度 如果大于600dp (横屏或者竖屏) 则使用这个layout </p>
+<p>3、使用布局别名<br>setContentView（R.layout.main)</p>
+<p>res/values/layout.xml:</p>
+<pre><code>&lt;resources&gt;
+&lt;item name=&quot;main&quot; type=&quot;layout&quot;&gt;@layout/main&lt;/item&gt;
+&lt;/resources&gt;
+</code></pre><p>Android3.2之后的平板布局</p>
+<p>res/values-sw600dp/layout.xml:<br>    <resources><br>    <item name="main" type="layout">@layout/main_twopanes</item><br></resources></p>
+<p>4、方向限定符</p>
+<p>res/values-sw600-land<br>res/values-sw600-port</p>
+<p>1.res/values/layouts.xml:</p>
+<pre><code>&lt;resources&gt;
+&lt;item name=&quot;main_layout&quot; type=&quot;layout&quot;&gt;@layout/onepane_with_bar&lt;/item&gt;
+&lt;bool name=&quot;has_two_panes&quot;&gt;false&lt;/bool&gt;
+&lt;/resources&gt;
+</code></pre><p>2.res/values-sw600dp-land/layouts.xml:</p>
+<pre><code>&lt;resources&gt;
+&lt;item name=&quot;main_layout&quot; type=&quot;layout&quot;&gt;@layout/twopanes&lt;/item&gt;
+&lt;bool name=&quot;has_two_panes&quot;&gt;true&lt;/bool&gt;
+&lt;/resources&gt;
+</code></pre><p><strong>注意：程序可以根据标志位的Boolean值来获取到当期的适配layout的状态，进一步判断并作出相应的响应</strong></p>
+<ul>
+<li>解决屏幕宽度不一致的问题</li>
+</ul>
+<p>原因：即使使用dp为单位，不同分辨率尺寸的设备的值也不一定相同</p>
+<p>方案：<br>将屏幕进行等分,定义自己的“单位”</p>
+<p>默认：res/vaules/lay_x.xml </p>
+<pre><code>&lt;dimen name=&quot;x1&quot;&gt;1dp&lt;/dimen&gt;
+                  ...
+&lt;dimen name=&quot;x320&quot;&gt;320dp&lt;/dimen&gt;
+</code></pre><p>480x320分辨率：res/vaules-480x320/lay_x.xml</p>
+<pre><code>&lt;dimen name=&quot;x1&quot;&gt;1px&lt;/dimen&gt;
+                ...
+&lt;dimen name=&quot;x320&quot;&gt;320px&lt;/dimen&gt;
+</code></pre><p>800x480分辨率：res/vaules-800x480/lay_x.xml</p>
+<pre><code>&lt;dimen name=&quot;x1&quot;&gt;1.5px&lt;/dimen&gt;
+                       ...
+&lt;dimen name=&quot;x320&quot;&gt;480px&lt;/dimen&gt;
+</code></pre><ul>
+<li>不同资源文件夹下图片的占用内容的问题</li>
+</ul>
+<p>测试机器：为xxhdpi</p>
+<p>drawble        74.97M  71.1M</p>
+<p>drawble-mdpi   74.95M  71.1M</p>
+<p>drawble-hdpi   35.38M</p>
+<p>drawble-xxhdpi 11.65M  7.8M</p>
+<p>解析：若放在drawble-mdpi，而当前机器为xxhdpi，图片需要拉升，长度为3倍关系，平面就是9倍关系，11.65x9=70.2,根据测试结果，成立。drawble与drawble-mdpi的大约相同的原因，是因为我们已drawble-mdpi为基准来进行确定。</p>
+<h1 id="u81EA_u9002_u5E94_u7528_u6237_u754C_u9762"><a href="#u81EA_u9002_u5E94_u7528_u6237_u754C_u9762" class="headerlink" title="自适应用户界面"></a>自适应用户界面</h1><hr>
+<ul>
+<li>确定当前布局</li>
+</ul>
+<p>方法：判断当前界面是否存在该布局（是否显示,View.VISABLE),根据某布局的标志位的Boolean值</p>
+<p>举例</p>
+<p>布局1：res/values/layouts.xml:</p>
+<pre><code>&lt;resources&gt;
+    &lt;item name=&quot;main_layout&quot; type=&quot;layout&quot;&gt;@layout/onepane_with_bar&lt;/item&gt;
+    &lt;bool name=&quot;has_two_panes&quot;&gt;false&lt;/bool&gt;
+&lt;/resources&gt;
+</code></pre><p>布局2：res/values-sw600dp-land/layouts.xml:</p>
+<pre><code>&lt;resources&gt;
+    &lt;item name=&quot;main_layout&quot; type=&quot;layout&quot;&gt;@layout/twopanes&lt;/item&gt;
+    &lt;bool name=&quot;has_two_panes&quot;&gt;true&lt;/bool&gt;
+&lt;resources&gt;
+</code></pre><p>分析：根据R.layouts.has_two_panes的Boolean值来进行确定，若为false则当前是布局1，若为true则当前布局为布局2。</p>
+<ul>
+<li>根据当前布局做出响应</li>
+<li><p>重复使用不同布局中的相同片段</p>
+<pre><code>使用Fragment
+</code></pre></li>
+<li><p>处理屏幕配置变化</p>
+</li>
+</ul>
+<ul>
+<li><p>动态设置</p>
+<p>在代码中进行布局的设计，非常灵活，可以通过计算当前设备的屏幕宽度来设计尺寸。</p>
+</li>
+</ul>
   
 	</div>
 		<footer class="article-footer clearfix">
@@ -170,7 +259,7 @@ dependencies {
 
   <div class="article-tags">
   
-  <span></span> <a href="/tags/AndroidStudio/">AndroidStudio</a>
+  <span></span> <a href="/tags/UI/">UI</a>
   </div>
 
 </div>
@@ -179,7 +268,7 @@ dependencies {
 
 	<div class="article-share" id="share">
 	
-	  <div data-url="http://blog.zengjingfang.cn/2015/11/15/AndroidStudio快速入门三：aar和jar 生成和导入项目/" data-title="AndroidStudio快速入门三：aar和jar 生成和导入项目 | ZengJingFang|Blog" data-tsina="null" class="share clearfix">
+	  <div data-url="http://blog.zengjingfang.cn/2016/01/08/UI屏幕适配必备的知识点/" data-title="UI屏幕适配必备的知识点 | ZengJingFang|Blog" data-tsina="null" class="share clearfix">
 	  </div>
 	
 	</div>
@@ -192,19 +281,11 @@ dependencies {
 	
 <nav class="article-nav clearfix">
  
- <div class="prev" >
- <a href="/2015/11/15/AndroidStudio快速入门二：Gradle快速构建Android项目（多个Module同时构建）/" title="AndroidStudio快速入门二：Gradle快速构建Android项目（多个Module同时构建）">
-  <strong>上一篇：</strong><br/>
-  <span>
-  AndroidStudio快速入门二：Gradle快速构建Android项目（多个Module同时构建）</span>
-</a>
-</div>
-
 
 <div class="next">
-<a href="/2015/11/15/AndroidStudio快速入门四：打造你的开发工具，settings必备/"  title="AndroidStudio快速入门四：打造你的开发工具，settings必备">
+<a href="/2015/12/31/2015,再见/"  title="2015,再见">
  <strong>下一篇：</strong><br/> 
- <span>AndroidStudio快速入门四：打造你的开发工具，settings必备
+ <span>2015,再见
 </span>
 </a>
 </div>
@@ -219,7 +300,7 @@ dependencies {
   <div id="toc" class="toc-aside">
   <strong class="toc-title">文章目錄</strong>
  
- 
+ <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#u91CD_u8981_u6982_u5FF5"><span class="toc-number">1.</span> <span class="toc-text">重要概念</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#u5C4F_u5E55_u9002_u914D_u65B9_u6848"><span class="toc-number">2.</span> <span class="toc-text">屏幕适配方案</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#u81EA_u9002_u5E94_u7528_u6237_u754C_u9762"><span class="toc-number">3.</span> <span class="toc-text">自适应用户界面</span></a></li></ol>
  
   </div>
 
