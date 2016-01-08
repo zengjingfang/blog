@@ -11,16 +11,16 @@
     
 
     
-    <meta name="description" content="进行屏幕适配不可不知的知识点，屏幕尺寸、分辨率、像素密度、dp、sp、weight，sw-xxx，最小宽度限定符，drawble的问题，图片资源内存解析，适配方法。掌握了这些，够你用啦！">
+    <meta name="description" content="进行屏幕适配不可不知的知识点，屏幕尺寸、分辨率、像素密度、dp、sp、weight，sw-xxx，最小宽度限定符，drawble的问题，图片资源内存解析，横屏竖屏切换，多种分辨率适配方法。掌握了这些，够你用啦！">
 <meta property="og:type" content="article">
 <meta property="og:title" content="UI屏幕适配必备的知识点">
 <meta property="og:url" content="http://blog.zengjingfang.cn/2016/01/08/UI屏幕适配必备的知识点/index.html">
 <meta property="og:site_name" content="ZengJingFang|Blog">
-<meta property="og:description" content="进行屏幕适配不可不知的知识点，屏幕尺寸、分辨率、像素密度、dp、sp、weight，sw-xxx，最小宽度限定符，drawble的问题，图片资源内存解析，适配方法。掌握了这些，够你用啦！">
-<meta property="og:updated_time" content="2016-01-08T13:18:26.501Z">
+<meta property="og:description" content="进行屏幕适配不可不知的知识点，屏幕尺寸、分辨率、像素密度、dp、sp、weight，sw-xxx，最小宽度限定符，drawble的问题，图片资源内存解析，横屏竖屏切换，多种分辨率适配方法。掌握了这些，够你用啦！">
+<meta property="og:updated_time" content="2016-01-08T13:29:12.800Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="UI屏幕适配必备的知识点">
-<meta name="twitter:description" content="进行屏幕适配不可不知的知识点，屏幕尺寸、分辨率、像素密度、dp、sp、weight，sw-xxx，最小宽度限定符，drawble的问题，图片资源内存解析，适配方法。掌握了这些，够你用啦！">
+<meta name="twitter:description" content="进行屏幕适配不可不知的知识点，屏幕尺寸、分辨率、像素密度、dp、sp、weight，sw-xxx，最小宽度限定符，drawble的问题，图片资源内存解析，横屏竖屏切换，多种分辨率适配方法。掌握了这些，够你用啦！">
 
     
     <link rel="alternative" href="/atom.xml" title="ZengJingFang|Blog" type="application/atom+xml">
@@ -178,18 +178,8 @@
 </code></pre><p>Android3.2之后的平板布局</p>
 <p>res/values-sw600dp/layout.xml:<br>    <resources><br>    <item name="main" type="layout">@layout/main_twopanes</item><br></resources></p>
 <p>4、方向限定符</p>
-<p>res/values-sw600-land<br>res/values-sw600-port</p>
-<p>1.res/values/layouts.xml:</p>
-<pre><code>&lt;resources&gt;
-&lt;item name=&quot;main_layout&quot; type=&quot;layout&quot;&gt;@layout/onepane_with_bar&lt;/item&gt;
-&lt;bool name=&quot;has_two_panes&quot;&gt;false&lt;/bool&gt;
-&lt;/resources&gt;
-</code></pre><p>2.res/values-sw600dp-land/layouts.xml:</p>
-<pre><code>&lt;resources&gt;
-&lt;item name=&quot;main_layout&quot; type=&quot;layout&quot;&gt;@layout/twopanes&lt;/item&gt;
-&lt;bool name=&quot;has_two_panes&quot;&gt;true&lt;/bool&gt;
-&lt;/resources&gt;
-</code></pre><p><strong>注意：程序可以根据标志位的Boolean值来获取到当期的适配layout的状态，进一步判断并作出相应的响应</strong></p>
+<p>res/values-sw600-land 横屏</p>
+<p>res/values-sw600-port 竖屏</p>
 <ul>
 <li>解决屏幕宽度不一致的问题</li>
 </ul>
